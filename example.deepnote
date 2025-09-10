@@ -1,0 +1,78 @@
+metadata:
+  createdAt: 2025-04-30T14:02:50.919Z
+  modifiedAt: 2025-09-05T11:05:19.666Z
+project:
+  id: 36167587-0941-4cbf-9410-7b807bd1ef66
+  name: Sandbox 2
+  notebooks:
+    - blocks:
+        - content: |-
+            # Welcome to Notebook 1
+
+            Hey there **sup**
+          id: 168da74c720643d185638eb1a82cebdc
+          metadata: {}
+          sortingKey: "9"
+          type: markdown
+        - content: print('Hello, world!')
+          executionCount: 1
+          id: 7bab3a0a64f14484b1e19fb0eeb3f637
+          metadata:
+            execution_start: 1754564707257
+            execution_millis: 4
+            execution_context_id: 57d8aac3-87c2-402f-9bd8-b219cc58fcca
+          outputReference: dbtable:cell_outputs/c188dafd-cc68-45e3-8b63-fd477f69976c
+          sortingKey: m
+          type: code
+      executionMode: block
+      id: c2b6ce34c0624095bd2c20ce9ce660ab
+      isModule: false
+      name: Notebook 1
+    - blocks:
+        - content: |-
+            # Notebook 2 what up!
+
+            Hey there **sup**
+          id: 368da74c720643d185638eb1a82cebdc
+          metadata: {}
+          sortingKey: "9"
+          type: markdown
+        - content: print('Hello, world!')
+          executionCount: 1
+          id: 9bab3a0a64f14484b1e19fb0eeb3f637
+          metadata:
+            execution_start: 1754564707257
+            execution_millis: 4
+            execution_context_id: 77d8aac3-87c2-402f-9bd8-b219cc58fcca
+          outputReference: dbtable:cell_outputs/d188dafd-cc68-45e3-8b63-fd477f69976c
+          sortingKey: m
+          type: code
+      executionMode: block
+      id: b2b6ce34c0624095bd2c20ce9ce660aa
+      isModule: false
+      name: Notebook 2
+    - blocks:
+        - content: |-
+            # Notebook 3 in the house!
+
+            Hey there **sup**
+          id: 368da74c720643d185638eb1a82cebdc
+          metadata: {}
+          sortingKey: "9"
+          type: markdown
+        - content: print('Hello, world!')
+          executionCount: 1
+          id: 9bab3a0a64f14484b1e19fb0eeb3f637
+          metadata:
+            execution_start: 1754564707257
+            execution_millis: 4
+            execution_context_id: 77d8aac3-87c2-402f-9bd8-b219cc58fcca
+          outputReference: dbtable:cell_outputs/d188dafd-cc68-45e3-8b63-fd477f69976c
+          sortingKey: m
+          type: code
+      executionMode: block
+      id: b2b6ce34c0624095bd2c20ce9ce660aa
+      isModule: false
+      name: Notebook 3 actually has a really long name I mean it’s insane
+  settings: {}
+version: 1.0.0
