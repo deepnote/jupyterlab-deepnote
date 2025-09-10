@@ -50,21 +50,62 @@ jupyter labextension list
 
 Note: You will need NodeJS to build the extension package.
 
+Use any Python environment and dependency manager you like, for example [uv](https://docs.astral.sh/uv/getting-started/installation/):
+
+```shell
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Create a Python environment in the project directory:
+
+```shell
+uv venv --python 3.12 --managed-python
+```
+
+Activate the Python environment:
+
+```shell
+source .venv/bin/activate
+```
+
+Install `jupyterlab`. The extension package itself doesn’t depend on `jupyterlab`, you just need `jupyterlab` in the environment where you will be testing the extension.
+
+```shell
+uv pip install jupyterlab
+```
+
+Install the extension package in editable mode. It installs the package’s dependencies, too:
+
+```shell
+uv pip install --editable . --verbose
+```
+
+Link your development version of the extension with JupyterLab:
+
+```shell
+jupyter labextension develop . --overwrite
+```
+
+Enable the extension in Jupyter Server:
+
+```shell
+jupyter server extension enable jupyterlab_deepnote
+```
+
+Rebuild the extension’s Typescript source after making changes:
+
+```shell
+jlpm run watch
+```
+
 The `jlpm` command is JupyterLab's pinned version of
 [yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
 `yarn` or `npm` in lieu of `jlpm` below.
 
-```bash
-# Clone the repo to your local environment
-# Change directory to the jupyterlab_deepnote directory
-# Install package in development mode
-pip install -e ".[test]"
-# Link your development version of the extension with JupyterLab
-jupyter labextension develop . --overwrite
-# Server extension must be manually installed in develop mode
-jupyter server extension enable jupyterlab_deepnote
-# Rebuild extension Typescript source after making changes
-jlpm build
+In a separate terminal, run `jupyter lab` with the `--config` option to register our custom file contents manager for the `.deepnote` extension. The `--debug` option lets you see HTTP requests in the logs, which is helpful for debugging.
+
+```shell
+jupyter lab --debug --config="$(pwd)/jupyter-config/server-config/jupyter_server_config.json"
 ```
 
 You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
