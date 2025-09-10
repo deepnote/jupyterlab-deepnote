@@ -5,22 +5,19 @@ except ImportError:
     # in editable mode with pip. It is highly recommended to install
     # the package from a stable release or in editable mode: https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs
     import warnings
+
     warnings.warn("Importing 'jupyterlab_deepnote' outside a proper installation.")
     __version__ = "dev"
+from jupyterlab_deepnote.contents import DeepnoteContentsManager
 from .handlers import setup_handlers
 
 
 def _jupyter_labextension_paths():
-    return [{
-        "src": "labextension",
-        "dest": "jupyterlab-deepnote"
-    }]
+    return [{"src": "labextension", "dest": "jupyterlab-deepnote"}]
 
 
 def _jupyter_server_extension_points():
-    return [{
-        "module": "jupyterlab_deepnote"
-    }]
+    return [{"module": "jupyterlab_deepnote"}]
 
 
 def _load_jupyter_server_extension(server_app):
@@ -34,3 +31,4 @@ def _load_jupyter_server_extension(server_app):
     setup_handlers(server_app.web_app)
     name = "jupyterlab_deepnote"
     server_app.log.info(f"Registered {name} server extension")
+    server_app.contents_manager = DeepnoteContentsManager(parent=server_app)
