@@ -3,27 +3,51 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 
-import { requestAPI } from './handler';
+import { NotebookPanel, NotebookWidgetFactory } from '@jupyterlab/notebook';
+import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
+import { IEditorServices } from '@jupyterlab/codeeditor';
 
-/**
- * Initialization data for the jupyterlab-deepnote extension.
- */
+const factoryName = 'Deepnote Notebook';
+
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'jupyterlab-deepnote:plugin',
-  description: 'A Deepnote extension for JupyterLab',
+  id: 'deepnote-jupyter-extension:plugin',
+  description: 'Open .deepnote files as notebooks.',
   autoStart: true,
-  activate: (app: JupyterFrontEnd) => {
-    console.log('JupyterLab extension jupyterlab-deepnote is activated!');
+  requires: [IRenderMimeRegistry, IEditorServices],
+  activate: (
+    app: JupyterFrontEnd,
+    rendermime: IRenderMimeRegistry,
+    editorServices: IEditorServices
+  ) => {
+    // 1) File type
+    app.docRegistry.addFileType(
+      {
+        name: 'deepnote',
+        displayName: 'Deepnote Notebook',
+        extensions: ['.deepnote'],
+        mimeTypes: ['text/yaml', 'application/x-yaml'],
+        fileFormat: 'text',
+        contentType: 'notebook'
+      },
+      [factoryName]
+    );
 
-    requestAPI<any>('get-example')
-      .then(data => {
-        console.log(data);
-      })
-      .catch(reason => {
-        console.error(
-          `The jupyterlab_deepnote server extension appears to be missing.\n${reason}`
-        );
-      });
+    // 2) Widget factory that reuses the stock notebook UI
+    const contentFactory = new NotebookPanel.ContentFactory({
+      editorFactory: editorServices.factoryService.newInlineEditor
+    });
+
+    const widgetFactory = new NotebookWidgetFactory({
+      name: factoryName,
+      modelName: 'notebook', // built-in notebook model
+      fileTypes: ['deepnote'],
+      defaultFor: ['deepnote'],
+      rendermime,
+      contentFactory,
+      mimeTypeService: editorServices.mimeTypeService
+    });
+
+    app.docRegistry.addWidgetFactory(widgetFactory);
   }
 };
 
