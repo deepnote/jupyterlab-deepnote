@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.4.0
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: andy@deepnote.com
+author_name: Andy Jakubowski
+has_binder: false
+has_settings: false
+kind: frontend-and-server
+labextension_name: jupyterlab-deepnote
+project_short_description: A Deepnote extension for JupyterLab
+python_name: jupyterlab_deepnote
+repository: https://github.com/deepnote/jupyterlab-deepnote
+test: true
+
