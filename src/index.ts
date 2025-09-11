@@ -10,7 +10,7 @@ import { IEditorServices } from '@jupyterlab/codeeditor';
 const factoryName = 'Deepnote Notebook';
 
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'deepnote-jupyter-extension:plugin',
+  id: 'jupyterlab-deepnote:plugin',
   description: 'Open .deepnote files as notebooks.',
   autoStart: true,
   requires: [IRenderMimeRegistry, IEditorServices],
