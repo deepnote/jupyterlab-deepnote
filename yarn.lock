@@ -2502,7 +2502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/settingregistry@npm:^4.4.7":
+"@jupyterlab/settingregistry@npm:^4.0.0, @jupyterlab/settingregistry@npm:^4.4.7":
   version: 4.4.7
   resolution: "@jupyterlab/settingregistry@npm:4.4.7"
   dependencies:
@@ -6799,7 +6799,9 @@ __metadata:
     "@jupyterlab/coreutils": ^6.0.0
     "@jupyterlab/notebook": ^4.4.7
     "@jupyterlab/services": ^7.0.0
+    "@jupyterlab/settingregistry": ^4.0.0
     "@jupyterlab/testutils": ^4.0.0
+    "@lumino/widgets": ^2.7.1
     "@types/jest": ^29.2.0
     "@types/json-schema": ^7.0.11
     "@types/react": ^18.0.26

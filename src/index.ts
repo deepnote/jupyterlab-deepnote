@@ -3,22 +3,16 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 
-import { NotebookPanel, NotebookWidgetFactory } from '@jupyterlab/notebook';
-import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
-import { IEditorServices } from '@jupyterlab/codeeditor';
-
-const factoryName = 'Deepnote Notebook';
+import { IToolbarWidgetRegistry, ToolbarButton } from '@jupyterlab/apputils';
+import { NotebookPanel } from '@jupyterlab/notebook';
+import { Widget } from '@lumino/widgets';
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-deepnote:plugin',
   description: 'Open .deepnote files as notebooks.',
   autoStart: true,
-  requires: [IRenderMimeRegistry, IEditorServices],
-  activate: (
-    app: JupyterFrontEnd,
-    rendermime: IRenderMimeRegistry,
-    editorServices: IEditorServices
-  ) => {
+  requires: [IToolbarWidgetRegistry],
+  activate: (app: JupyterFrontEnd, toolbarRegistry: IToolbarWidgetRegistry) => {
     // 1) File type
     app.docRegistry.addFileType(
       {
@@ -27,27 +21,31 @@ const plugin: JupyterFrontEndPlugin<void> = {
         extensions: ['.deepnote'],
         mimeTypes: ['text/yaml', 'application/x-yaml'],
         fileFormat: 'text',
-        contentType: 'notebook'
+        contentType: 'file'
       },
-      [factoryName]
+      ['Notebook']
     );
 
-    // 2) Widget factory that reuses the stock notebook UI
-    const contentFactory = new NotebookPanel.ContentFactory({
-      editorFactory: editorServices.factoryService.newInlineEditor
-    });
+    app.docRegistry.setDefaultWidgetFactory('deepnote', 'Notebook');
 
-    const widgetFactory = new NotebookWidgetFactory({
-      name: factoryName,
-      modelName: 'notebook', // built-in notebook model
-      fileTypes: ['deepnote'],
-      defaultFor: ['deepnote'],
-      rendermime,
-      contentFactory,
-      mimeTypeService: editorServices.mimeTypeService
-    });
+    toolbarRegistry.addFactory<NotebookPanel>(
+      'Notebook',
+      'deepnote:switch-notebook',
+      panel => {
+        if (!panel.context.path.endsWith('.deepnote')) {
+          return new Widget(); // don’t render for .ipynb or others
+        }
 
-    app.docRegistry.addWidgetFactory(widgetFactory);
+        return new ToolbarButton({
+          className: 'debug-deepnote-button',
+          label: 'Deepnote',
+          tooltip: 'Do a Deepnote action',
+          onClick: () => {
+            console.log('clicked for', panel.context.path);
+          }
+        });
+      }
+    );
   }
 };
 

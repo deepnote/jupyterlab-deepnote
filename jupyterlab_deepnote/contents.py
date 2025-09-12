@@ -63,6 +63,7 @@ class DeepnoteContentsManager(FileContentsManager):
             model["type"] = "notebook"
             model["format"] = "json"
             model["content"] = nb_node
+            model["writable"] = False
             self.mark_trusted_cells(nb_node, path)
             self.validate_notebook_model(model, validation_error={})
 

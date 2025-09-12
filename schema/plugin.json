@@ -1,0 +1,11 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "jupyter.lab.toolbars": {
+    "Notebook": [{ "name": "deepnote:switch-notebook", "rank": 1 }]
+  },
+  "title": "jupyterlab-deepnote",
+  "description": "jupyterlab-deepnote settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
