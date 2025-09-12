@@ -1,7 +1,6 @@
 # deepnote_jupyter_extension/contents.py
 from jupyter_server.services.contents.filemanager import FileContentsManager
 from typing import cast
-import nbformat
 
 import yaml
 from nbformat.v4 import new_notebook, new_code_cell, new_markdown_cell
@@ -17,6 +16,7 @@ def yaml_to_ipynb(yaml_text: str):
     notebooks = (
         data.get("project", {}).get("notebooks", []) if isinstance(data, dict) else []
     )
+
     if not notebooks:
         return new_notebook(cells=[])
 
@@ -33,7 +33,9 @@ def yaml_to_ipynb(yaml_text: str):
         else:
             cells.append(new_markdown_cell(content))
 
-    return new_notebook(cells=cells, metadata={})
+    notebook_names = [nb.get("name", "") for nb in notebooks]
+    metadata = {"notebook_names": notebook_names}
+    return new_notebook(cells=cells, metadata=metadata)
 
 
 def yaml_to_ipynb_dummy(yaml_text: str) -> dict:
@@ -43,9 +45,6 @@ def yaml_to_ipynb_dummy(yaml_text: str) -> dict:
 class DeepnoteContentsManager(FileContentsManager):
     def get(self, path, content=True, type=None, format=None, require_hash=False):
         if path.endswith(".deepnote") and (content == 1):
-            self.log.info(
-                "\n\n\n🌴🌴🌴 path %s, content: %s, type: %s", path, content, type
-            )
             os_path = self._get_os_path(path)
 
             # _read_file may return 2- or 3-tuple depending on raw flag in implementation hints
@@ -56,8 +55,7 @@ class DeepnoteContentsManager(FileContentsManager):
             else:
                 yaml_text = cast(str, _content)
 
-            nb_dict = yaml_to_ipynb(yaml_text)
-            nb_node = nbformat.from_dict(nb_dict)
+            nb_node = yaml_to_ipynb(yaml_text)
 
             model = self._base_model(path)
             model["type"] = "notebook"
