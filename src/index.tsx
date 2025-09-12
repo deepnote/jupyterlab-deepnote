@@ -68,7 +68,7 @@ class NotebookPicker extends ReactWidget {
           ? metadataNames
           : [];
 
-      this.selected = names.length > 0 ? names[0] : null;
+      this.selected = names.length === 0 ? null : (names[0] ?? null);
       this.update();
     });
   }
@@ -104,7 +104,40 @@ class NotebookPicker extends ReactWidget {
     this.update();
   };
 
+  private handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const model = this.panel.model;
+    if (!model) {
+      return;
+    }
+
+    const selected = event.target.value;
+    const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
+    const notebooks = deepnoteMetadata?.notebooks;
+
+    if (notebooks && selected in notebooks) {
+      // clone the notebook JSON
+      const newModelData = { ...notebooks[selected] };
+
+      // preserve deepnote metadata *without* re-inserting all notebooks
+      newModelData.metadata = {
+        ...(newModelData.metadata ?? {}),
+        deepnote: {
+          notebook_names: deepnoteMetadata?.notebook_names ?? [],
+          notebooks: deepnoteMetadata?.notebooks ?? {}
+        }
+      };
+
+      model.fromJSON(newModelData);
+      model.dirty = false;
+    }
+
+    this.selected = selected;
+    this.update();
+  };
+
   render(): JSX.Element {
+    const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
+    const metadataNames = deepnoteMetadata?.notebook_names;
     const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
     const metadataNames = deepnoteMetadata?.notebook_names;
     const names =
@@ -115,7 +148,6 @@ class NotebookPicker extends ReactWidget {
 
     return (
       <HTMLSelect
-        id="deepnote-notebook-picker"
         value={this.selected ?? '-'}
         onChange={this.handleChange}
         onKeyDown={() => {}}
