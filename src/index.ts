@@ -4,15 +4,23 @@ import {
 } from '@jupyterlab/application';
 
 import { IToolbarWidgetRegistry, ToolbarButton } from '@jupyterlab/apputils';
-import { NotebookPanel } from '@jupyterlab/notebook';
-import { Widget } from '@lumino/widgets';
+import {
+  INotebookWidgetFactory,
+  NotebookPanel,
+  NotebookWidgetFactory
+} from '@jupyterlab/notebook';
+// import { Widget } from '@lumino/widgets';
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-deepnote:plugin',
   description: 'Open .deepnote files as notebooks.',
   autoStart: true,
-  requires: [IToolbarWidgetRegistry],
-  activate: (app: JupyterFrontEnd, toolbarRegistry: IToolbarWidgetRegistry) => {
+  requires: [INotebookWidgetFactory, IToolbarWidgetRegistry],
+  activate: (
+    app: JupyterFrontEnd,
+    notebookWidgetFactory: NotebookWidgetFactory,
+    toolbarRegistry: IToolbarWidgetRegistry
+  ) => {
     // 1) File type
     app.docRegistry.addFileType(
       {
@@ -23,18 +31,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
         fileFormat: 'text',
         contentType: 'file'
       },
-      ['Notebook']
+      [notebookWidgetFactory.name]
     );
 
-    app.docRegistry.setDefaultWidgetFactory('deepnote', 'Notebook');
+    app.docRegistry.setDefaultWidgetFactory(
+      'deepnote',
+      notebookWidgetFactory.name
+    );
 
     toolbarRegistry.addFactory<NotebookPanel>(
-      'Notebook',
+      notebookWidgetFactory.name,
       'deepnote:switch-notebook',
       panel => {
-        if (!panel.context.path.endsWith('.deepnote')) {
-          return new Widget(); // don’t render for .ipynb or others
-        }
+        console.log('🚨🚨🚨🚨 toolbar item factory');
+        // if (!panel.context.path.endsWith('.deepnote')) {
+        //   return new Widget(); // don’t render for .ipynb or others
+        // }
 
         return new ToolbarButton({
           className: 'debug-deepnote-button',
