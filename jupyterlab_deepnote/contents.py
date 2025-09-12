@@ -20,21 +20,40 @@ def yaml_to_ipynb(yaml_text: str):
     if not notebooks:
         return new_notebook(cells=[])
 
+    # Collect notebook names
+    notebook_names = [nb.get("name", "") for nb in notebooks]
+
+    # Build all_notebooks dict: name -> full nbformat notebook JSON
+    all_notebooks = {}
+    for nb in notebooks:
+        nb_blocks = nb.get("blocks", [])
+        nb_cells = []
+        for block in sorted(nb_blocks, key=lambda b: b.get("sortingKey", "")):
+            btype = block.get("type", "code")
+            content = block.get("content", "")
+            if btype == "code":
+                nb_cells.append(new_code_cell(content))
+            else:
+                nb_cells.append(new_markdown_cell(content))
+        # Use the notebook name as key
+        nb_name = nb.get("name", "")
+        all_notebooks[nb_name] = new_notebook(cells=nb_cells)
+
+    # Use first notebook's cells to render initially
     nb0 = notebooks[0]
     blocks = nb0.get("blocks", [])
     cells = []
-
     for block in sorted(blocks, key=lambda b: b.get("sortingKey", "")):
         btype = block.get("type", "code")
         content = block.get("content", "")
-
         if btype == "code":
             cells.append(new_code_cell(content))
         else:
             cells.append(new_markdown_cell(content))
 
-    notebook_names = [nb.get("name", "") for nb in notebooks]
-    metadata = {"notebook_names": notebook_names}
+    metadata = {
+        "deepnote": {"notebook_names": notebook_names, "notebooks": all_notebooks}
+    }
     return new_notebook(cells=cells, metadata=metadata)
 
 
