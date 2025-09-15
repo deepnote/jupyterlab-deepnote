@@ -115,11 +115,18 @@ class NotebookPicker extends ReactWidget {
 
     return (
       <HTMLSelect
+        id="deepnote-notebook-picker"
         value={this.selected ?? '-'}
         onChange={this.handleChange}
         onKeyDown={() => {}}
         aria-label="Select active notebook"
         title="Select active notebook"
+        style={{
+          maxWidth: '120px',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden'
+        }}
       >
         {names.length === 0 ? (
           <option value="-">-</option>

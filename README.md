@@ -1,7 +1,5 @@
 # jupyterlab_deepnote
 
-[![Github Actions Status](https://github.com/deepnote/jupyterlab-deepnote/workflows/Build/badge.svg)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/build.yml)
-
 A Deepnote extension for JupyterLab
 
 This extension is composed of a Python package named `jupyterlab_deepnote`
@@ -167,13 +165,6 @@ To execute them, execute:
 jlpm
 jlpm test
 ```
-
-#### Integration tests
-
-This extension uses [Playwright](https://playwright.dev/docs/intro) for the integration tests (aka user level tests).
-More precisely, the JupyterLab helper [Galata](https://github.com/jupyterlab/jupyterlab/tree/master/galata) is used to handle testing the extension in JupyterLab.
-
-More information are provided within the [ui-tests](./ui-tests/README.md) README.
 
 ### Packaging the extension
 
