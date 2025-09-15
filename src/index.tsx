@@ -115,7 +115,7 @@ class NotebookPicker extends ReactWidget {
 
     return (
       <HTMLSelect
-        data-testid="deepnote-notebook-picker"
+        id="deepnote-notebook-picker"
         value={this.selected ?? '-'}
         onChange={this.handleChange}
         onKeyDown={() => {}}
