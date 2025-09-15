@@ -124,7 +124,8 @@ class NotebookPicker extends ReactWidget {
         style={{
           maxWidth: '120px',
           textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap'
+          whiteSpace: 'nowrap',
+          overflow: 'hidden'
         }}
       >
         {names.length === 0 ? (
