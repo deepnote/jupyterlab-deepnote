@@ -3,7 +3,8 @@ from jupyter_server.services.contents.filemanager import FileContentsManager
 from typing import cast
 
 import yaml
-from nbformat.v4 import new_notebook, new_code_cell, new_markdown_cell
+from nbformat.v4 import new_notebook
+from .convert_format import convert_blocks_to_cells
 
 
 def yaml_to_ipynb(yaml_text: str):
@@ -27,14 +28,7 @@ def yaml_to_ipynb(yaml_text: str):
     all_notebooks = {}
     for nb in notebooks:
         nb_blocks = nb.get("blocks", [])
-        nb_cells = []
-        for block in sorted(nb_blocks, key=lambda b: b.get("sortingKey", "")):
-            btype = block.get("type", "code")
-            content = block.get("content", "")
-            if btype == "code":
-                nb_cells.append(new_code_cell(content))
-            else:
-                nb_cells.append(new_markdown_cell(content))
+        nb_cells = convert_blocks_to_cells(nb_blocks)
         # Use the notebook name as key
         nb_name = nb.get("name", "")
         all_notebooks[nb_name] = new_notebook(cells=nb_cells)
@@ -42,14 +36,7 @@ def yaml_to_ipynb(yaml_text: str):
     # Use first notebook's cells to render initially
     nb0 = notebooks[0]
     blocks = nb0.get("blocks", [])
-    cells = []
-    for block in sorted(blocks, key=lambda b: b.get("sortingKey", "")):
-        btype = block.get("type", "code")
-        content = block.get("content", "")
-        if btype == "code":
-            cells.append(new_code_cell(content))
-        else:
-            cells.append(new_markdown_cell(content))
+    cells = convert_blocks_to_cells(blocks)
 
     metadata = {
         "deepnote": {"notebook_names": notebook_names, "notebooks": all_notebooks}
