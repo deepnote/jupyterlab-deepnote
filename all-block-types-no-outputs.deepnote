@@ -1,0 +1,738 @@
+metadata:
+  createdAt: 2025-09-16T10:11:17.611Z
+  modifiedAt: 2025-09-17T09:30:51.468Z
+project:
+  id: c4604eab-9672-4d68-ab40-4c27af41fbc7
+  name: all-block-types
+  notebooks:
+    - blocks:
+        - content: Code
+          id: f6359663a8984338a1b2c4cfd0d4c171
+          metadata:
+            formattedRanges: []
+          sortingKey: a0
+          type: text-cell-p
+        - content: |-
+            import pandas as pd
+            import numpy as np
+
+            # Create sample data
+            data = {
+                'Name': ['John', 'Emma', 'Michael', 'Sarah', 'David'],
+                'Age': [28, 34, 42, 25, 31],
+                'Salary': [65000, 78000, 95000, 62000, 70000],
+                'Department': ['IT', 'HR', 'Finance', 'Marketing', 'IT'],
+                'Experience': [3, 7, 12, 2, 5]
+            }
+
+            # Create DataFrame
+            df = pd.DataFrame(data)
+
+            # Create salary_max variable
+            salary_max = df['Salary'].max()
+
+            # Create salary_min variable
+            salary_min = df['Salary'].min()
+
+            # Display the DataFrame
+            df
+          executionCount: 1
+          id: 347b6e16651c453881cf75a0c7365618
+          metadata:
+            execution_start: 1758017228976
+            execution_millis: 13
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+          outputs: []
+          sortingKey: m
+          type: code
+        - content: Markdown
+          id: f8e64035510d4918a22bbac0bc997982
+          metadata:
+            formattedRanges: []
+          sortingKey: s
+          type: text-cell-p
+        - content: >-
+            # Markdown heading
+
+
+            Markdown body text with a [link](https://www.google.com) and a
+            **bold** word.
+          id: 73f558db2f114d50b4eca9ebbff82870
+          metadata: {}
+          sortingKey: v
+          type: markdown
+        - content: Paragraph
+          id: 34aebdcb65d84cdba24cc6b0185beeba
+          metadata:
+            formattedRanges: []
+          sortingKey: x
+          type: text-cell-p
+        - content: A paragraph of text
+          id: f0a69c045b0b4a47ac3a19ca2e04cad7
+          metadata:
+            formattedRanges: []
+          sortingKey: y
+          type: text-cell-p
+        - content: Heading 1
+          id: 300cda58d0814c928dd3bfeb72965696
+          metadata:
+            formattedRanges: []
+          sortingKey: yU
+          type: text-cell-p
+        - content: Heading 1
+          id: 1cf63fe584e6403bb1c646f6481ed1e1
+          metadata:
+            formattedRanges: []
+          sortingKey: yj
+          type: text-cell-h1
+        - content: Heading 2
+          id: b3aa9896fc6e4b97ba3eed8fdfb8995a
+          metadata:
+            formattedRanges: []
+          sortingKey: yr
+          type: text-cell-p
+        - content: Heading 2
+          id: 9ede33b832b14c7781888a2f778f6785
+          metadata:
+            formattedRanges: []
+          sortingKey: yv
+          type: text-cell-h2
+        - content: Heading 3
+          id: 1fdd93c5ff004dac896214c52c2111e9
+          metadata:
+            formattedRanges: []
+          sortingKey: yx
+          type: text-cell-p
+        - content: Heading 3
+          id: 6514a011a46a4a149046d188ab0eb271
+          metadata:
+            formattedRanges: []
+          sortingKey: yy
+          type: text-cell-h3
+        - content: Bulleted list
+          id: faa890e3bdc647039b735657ad0aefbf
+          metadata:
+            formattedRanges: []
+          sortingKey: yyU
+          type: text-cell-p
+        - content: Bullet one
+          id: aec4ba3615954acaabdedf70f142c332
+          metadata:
+            formattedRanges: []
+          sortingKey: yyj
+          type: text-cell-bullet
+        - content: Bullet two
+          id: 9f9f6c22499645a0945b46ec2ab5998a
+          metadata:
+            formattedRanges: []
+          sortingKey: yyr
+          type: text-cell-bullet
+        - content: Bullet three
+          id: 6a1360e12cf648078226ee019c87f483
+          metadata:
+            formattedRanges: []
+          sortingKey: yyv
+          type: text-cell-bullet
+        - content: To-do list
+          id: 54fea078b60b40caa7ed54d98b74c2f7
+          metadata:
+            formattedRanges: []
+          sortingKey: yyx
+          type: text-cell-p
+        - content: To-do item one
+          id: b8213fd33984429da8ab939a6cafe53f
+          metadata:
+            formattedRanges: []
+          sortingKey: yyy
+          type: text-cell-todo
+        - content: To-do item two
+          id: 8757f7e24b824c6e8c1c2ee3e76e5e50
+          metadata:
+            checked: false
+            formattedRanges: []
+          sortingKey: yyyU
+          type: text-cell-todo
+        - content: To-do item three
+          id: 30cf5a1a68fc4579ae86a498ab916ab3
+          metadata:
+            checked: false
+            formattedRanges: []
+          sortingKey: yyyj
+          type: text-cell-todo
+        - content: Callout
+          id: b6729542fe4c47079a398657a66a75c3
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyr
+          type: text-cell-p
+        - content: A callout with some text
+          id: b3dc04fdfc9c4571be3a960e9674e3a1
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyv
+          type: text-cell-callout
+        - content: Separator
+          id: 3cb803815f694153bbf763d4f82772f2
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyx
+          type: text-cell-p
+        - content: ""
+          id: 091223f162044c2bab926c0f36a688e8
+          metadata: {}
+          sortingKey: yyyy
+          type: separator
+        - content: SQL
+          id: de73a7dcfae44252acb9e92f46008bc1
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyU
+          type: text-cell-p
+        - content: SELECT * FROM df;
+          executionCount: 2
+          id: 3cbce657e51247f2b01b730661260cb3
+          metadata:
+            execution_start: 1758017229128
+            execution_millis: 371
+            sql_integration_id: deepnote-dataframe-sql
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: df
+          outputs: []
+          sortingKey: yyyyj
+          type: sql
+        - content: Chat
+          id: b4d48a1639bc4a8b83a7b4000085a862
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyr
+          type: text-cell-p
+        - content: ""
+          executionCount: 3
+          id: 157db3d3f69845be87d3eee17eb677fe
+          metadata:
+            execution_start: 1758017230093
+            execution_millis: 125
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: df
+            deepnote_visualization_spec:
+              layer:
+                - layer:
+                    - layer:
+                        - mark:
+                            clip: true
+                            type: bar
+                            color: "#2266D3"
+                            tooltip: true
+                          encoding:
+                            x:
+                              axis:
+                                title: Employee name
+                              sort: null
+                              type: nominal
+                              field: Name
+                              scale:
+                                type: linear
+                            y:
+                              axis:
+                                title: Salary
+                                format:
+                                  type: number
+                                  decimals: null
+                                formatType: numberFormatFromNumberType
+                              type: quantitative
+                              field: Salary
+                              scale:
+                                type: linear
+                              format:
+                                type: default
+                                decimals: null
+                              aggregate: sum
+                              formatType: numberFormatFromNumberType
+                            color:
+                              type: nominal
+                              datum: Salary
+                              scale:
+                                range:
+                                  - "#2266D3"
+                                domain:
+                                  - Salary
+                            xOffset:
+                              datum: series_0
+                          transform: []
+                  resolve:
+                    scale:
+                      color: independent
+              title: Salary by employee
+              config:
+                legend:
+                  disable: false
+              $schema: https://vega.github.io/schema/vega-lite/v5.json
+              encoding: {}
+              usermeta:
+                seriesNames:
+                  - Salary
+                seriesOrder:
+                  - 0
+                specSchemaVersion: 2
+                tooltipDefaultMode: true
+          outputs: []
+          sortingKey: yyyyv
+          type: visualization
+        - content: Big number
+          id: 4792b856d35b40c3ac4ecc880513ba67
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyx
+          type: text-cell-p
+        - content: >
+            
+            def __deepnote_big_number__():
+                import json
+                import jinja2
+                from jinja2 import meta
+
+                def render_template(template):
+                    parsed_content = jinja2.Environment().parse(template)
+
+                    required_variables = meta.find_undeclared_variables(parsed_content)
+
+                    context = {
+                        variable_name: globals().get(variable_name)
+                        for variable_name in required_variables
+                    }
+
+                    result = jinja2.Environment().from_string(template).render(context)
+
+                    return result
+
+                rendered_title = render_template("Max salary")
+                rendered_comparison_title = render_template("Difference with min")
+
+                return json.dumps({
+                    "comparisonTitle": rendered_comparison_title,
+                    "comparisonValue": f"{salary_min}",
+                    "title": rendered_title,
+                    "value": f"{salary_max}"
+                })
+
+            __deepnote_big_number__()
+          executionCount: 4
+          id: 63bd93dd0c7b4940bb7e2f281ef527ea
+          metadata:
+            execution_start: 1758017230260
+            execution_millis: 1
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_big_number_title: Max salary
+            deepnote_big_number_value: salary_max
+            deepnote_big_number_format: currency
+            deepnote_big_number_comparison_type: ""
+            deepnote_big_number_comparison_title: Difference with min
+            deepnote_big_number_comparison_value: salary_min
+            deepnote_big_number_comparison_format: ""
+            deepnote_big_number_comparison_enabled: true
+          outputs: []
+          sortingKey: yyyyy
+          type: big-number
+        - content: Text input
+          id: b4ef3456ab3541d59c32127a4ec3623a
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyU
+          type: text-cell-p
+        - content: text_input = ''
+          executionCount: 5
+          id: 9617772dd620494588d82ff362f8723b
+          metadata:
+            execution_start: 1758017230310
+            execution_millis: 0
+            deepnote_input_label: Text input display name
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: text_input
+            deepnote_variable_value: ""
+            deepnote_variable_default_value: Some text input value
+          outputs: []
+          sortingKey: yyyyyj
+          type: input-text
+        - content: Text area input
+          id: d68f1407519648cf9352322a78706262
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyr
+          type: text-cell-p
+        - content: text_area_input = ''
+          executionCount: 6
+          id: 78b702ad9e4249c6a734e6540fd6d594
+          metadata:
+            execution_start: 1758017230360
+            execution_millis: 0
+            deepnote_input_label: Text area input
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: text_area_input
+            deepnote_variable_value: ""
+            deepnote_variable_default_value: Some text area value
+          outputs: []
+          sortingKey: yyyyyv
+          type: input-textarea
+        - content: Select input
+          id: 6b4cf64deb7e4889a12ff8224f403e6e
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyx
+          type: text-cell-p
+        - content: select_input = 'Option 1'
+          executionCount: 7
+          id: ad0dc815587c414e8350b7b2c277f526
+          metadata:
+            execution_start: 1758017230410
+            execution_millis: 0
+            deepnote_input_label: Select input display name
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: select_input
+            deepnote_variable_value: Option 1
+            deepnote_variable_options:
+              - Option 1
+              - Option 2
+            deepnote_variable_select_type: from-options
+            deepnote_variable_default_value: Option 1
+            deepnote_variable_custom_options:
+              - Option 1
+              - Option 2
+            deepnote_variable_selected_variable: ""
+          outputs: []
+          sortingKey: yyyyyy
+          type: input-select
+        - content: Slider input
+          id: d71623200b3a4139b78a3f64f11d1fee
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyU
+          type: text-cell-p
+        - content: slider_input = 5
+          executionCount: 8
+          id: f5bde14ac91b4c619d4721119f6dc097
+          metadata:
+            execution_start: 1758017230460
+            execution_millis: 0
+            deepnote_input_label: Slider input display name
+            deepnote_slider_step: 1
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: slider_input
+            deepnote_variable_value: "5"
+            deepnote_slider_max_value: 10
+            deepnote_slider_min_value: 0
+            deepnote_variable_default_value: "7"
+          outputs: []
+          sortingKey: yyyyyyj
+          type: input-slider
+        - content: Checkbox input
+          id: 1025124c6e2d423db37f1a2801d919c8
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyr
+          type: text-cell-p
+        - content: checkbox_input = False
+          executionCount: 9
+          id: 2b8c96e18b9047e1abdbc1030e64e483
+          metadata:
+            execution_start: 1758017230510
+            execution_millis: 0
+            deepnote_input_label: Checkbox input display name
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: checkbox_input
+            deepnote_variable_value: false
+            deepnote_input_checkbox_label: Checkbox label
+            deepnote_variable_default_value: true
+          outputs: []
+          sortingKey: yyyyyyv
+          type: input-checkbox
+        - content: Date input
+          id: 5574b42d69b84dd485a5af45eed8ed24
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyx
+          type: text-cell-p
+        - content: |
+            
+            from dateutil.parser import parse as _deepnote_parse
+            date_input = _deepnote_parse('2025-09-16T00:00:00.000Z').date()
+          executionCount: 1
+          id: da864431beb24d7ea254caf07469b64f
+          metadata:
+            execution_start: 1758101400493
+            execution_millis: 1
+            deepnote_input_label: Date input display name
+            execution_context_id: c8ddf739-5e27-4b0f-a7a1-6f638a515fbc
+            deepnote_variable_name: date_input
+            deepnote_variable_value: 2025-09-16T00:00:00.000Z
+            deepnote_input_date_version: 2
+            deepnote_variable_default_value: 2025-08-27T00:00:00.000Z
+          outputs: []
+          sortingKey: yyyyyyy
+          type: input-date
+        - content: Date range input
+          id: 453586f33cff44b8817b90f8fe96bb7c
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyyU
+          type: text-cell-p
+        - content: date_range_input = [None, None]
+          executionCount: 11
+          id: c0d58153fea24d749787d145a7184a95
+          metadata:
+            execution_start: 1758017230610
+            execution_millis: 0
+            deepnote_input_label: Date range input display name
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: date_range_input
+            deepnote_variable_value: ""
+            deepnote_variable_default_value:
+              - 2025-08-12
+              - 2025-08-14
+          outputs: []
+          sortingKey: yyyyyyyj
+          type: input-date-range
+        - content: File input
+          id: 067e15e2da45411996f2596f0b771bc2
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyyr
+          type: text-cell-p
+        - content: file_input = 'file_input_uploads/user_events_mini.csv'
+          executionCount: 12
+          id: 4aaf723a72644849aeac5850a31899a0
+          metadata:
+            execution_start: 1758017230660
+            execution_millis: 0
+            deepnote_input_label: File input display name
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_variable_name: file_input
+            deepnote_variable_value: file_input_uploads/user_events_mini.csv
+            deepnote_allowed_file_extensions: .csv
+          outputs: []
+          sortingKey: yyyyyyyv
+          type: input-file
+        - content: Button
+          id: 07b4d5b4d6974ee2bc1ba0cebc222756
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyyx
+          type: text-cell-p
+        - content: ""
+          id: a697f0202b9a4c67a4cb7120efef8867
+          metadata:
+            execution_start: 1758017230710
+            execution_millis: 0
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_button_title: Set variable
+            deepnote_variable_name: button_input_set_variable
+            deepnote_button_behavior: set_variable
+            deepnote_button_color_scheme: blue
+          outputs: []
+          sortingKey: yyyyyyyy
+          type: button
+        - content: ""
+          id: 8b4935f7cefe4d819cad51b66c93fd79
+          metadata:
+            execution_start: 1758017230760
+            execution_millis: 0
+            execution_context_id: 43d850b5-85c3-4bc8-b2d5-b50f2529e42c
+            deepnote_button_title: Run notebook
+            deepnote_variable_name: button_1
+            deepnote_button_behavior: run
+            deepnote_button_color_scheme: blue
+          outputs: []
+          sortingKey: yyyyyyyyU
+          type: button
+        - content: Module
+          id: 0a334a952e274c2e915002636375b331
+          metadata:
+            formattedRanges: []
+          sortingKey: yyyyyyyyj
+          type: text-cell-p
+        - content: ""
+          executionCount: 1
+          id: 8e613308b24f419eb550573eda2602ab
+          metadata:
+            execution_start: 1758017517949
+            execution_millis: 145407
+            execution_context_id: f5da58fe-0dad-4318-867a-0ab9925d7c28
+            function_notebook_id: e960b15d27074d38a6b07ff87eb42c89
+            function_notebook_inputs: {}
+            last_function_run_started_at: 1758017655789
+            function_notebook_export_mappings:
+              Monthly_signups:
+                enabled: true
+                variable_name: Monthly_signups
+            last_executed_function_notebook_id: e960b15d27074d38a6b07ff87eb42c89
+          outputs: []
+          sortingKey: yyyyyyyyr
+          type: notebook-function
+      executionMode: block
+      id: 686ad8158f6947f9b2796fb1add22277
+      isModule: false
+      name: All block types
+      workingDirectory: /
+  settings:
+    requirements:
+      - Please
+      - don't
+      - install
+      - "`jupyter`"
+      - or
+      - "`jedi`"
+      - packages,
+      - they
+      - would
+      - break
+      - your
+      - Deepnote
+      - environment.
+      - Also,
+      - no
+      - need
+      - to
+      - put
+      - "`!pip"
+      - install`s
+      - here,
+      - we
+      - already
+      - save
+      - those
+      - automatically!
+      - then
+      - ./requirements.txt
+      - fi
+      - unidecode
+      - cairosvg
+      - wordcloud
+      - pandas
+      - requests
+      - nltk
+      - vaderSentiment
+      - matplotlib
+      - seaborn
+      - transformers
+      - '"pandas>=2.0"'
+      - ipython
+      - requirements.txt
+      - python
+      - pip
+      - wheel
+      - plotly
+      - Finally,
+      - will
+      - sort
+      - the
+      - dataframe
+      - based
+      - on
+      - percentage
+      - change
+      - in
+      - descending
+      - order
+      - and
+      - select
+      - top
+      - "5."
+      - If
+      - "`yfinance`"
+      - is
+      - not
+      - installed
+      - Python
+      - environment,
+      - it
+      - using
+      - "`!yfinance`."
+      - pytrends
+      - pandas==1.1.0
+      - /work/testmc-0.1.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - else
+      - Plotly
+      - a
+      - powerful
+      - library
+      - for
+      - creating
+      - interactive
+      - visualizations.
+      - In
+      - this
+      - notebook,
+      - used
+      - generate
+      - bar
+      - charts,
+      - line
+      - histograms.
+      - The
+      - "`!plotly`"
+      - command
+      - ensures
+      - that
+      - available
+      - use.
+      - note
+      - symbols
+      - provided
+      - are
+      - just
+      - reference.
+      - You
+      - can
+      - replace
+      - them
+      - according
+      - interests.
+      - code
+      - snippet
+      - assumes
+      - you
+      - have
+      - (`pd`)
+      - installed.
+      - not,
+      - "`!pandas`."
+      - jinja2
+      - Jinja2==3.0.0
+      - altair
+      - vega_datasets
+      - sentry-sdk
+      - responses
+      - parameterized
+      - python-socketio
+      - eventlet
+      - vllm
+      - .
+      - running
+      - after
+      - executing
+      - "!fastapi"
+      - '"sideloading'
+      - packages"
+      - notebook
+      - ipywidgets
+      - jupyterlab
+      - psutil
+      - Absolutely,
+      - here
+      - few
+      - examples
+      - of
+      - how
+      - Notion
+      - API
+      - be
+      - Python.
+      - It
+      - uses
+      - "`notion`"
+      - package.
+      - installed,
+      - via
+      - "`!notion`."
+      - "%fastapi"
+      - "%-q"
+version: 1.0.0
