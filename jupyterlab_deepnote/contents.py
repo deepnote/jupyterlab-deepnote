@@ -2,63 +2,7 @@
 from jupyter_server.services.contents.filemanager import FileContentsManager
 from typing import cast
 
-import yaml
-from nbformat.v4 import new_notebook, new_code_cell, new_markdown_cell
-
-
-def yaml_to_ipynb(yaml_text: str):
-    """Convert Deepnote YAML into a minimal Jupyter nbformat v4 notebook."""
-    try:
-        data = yaml.safe_load(yaml_text)
-    except Exception:
-        return new_notebook(cells=[])
-
-    notebooks = (
-        data.get("project", {}).get("notebooks", []) if isinstance(data, dict) else []
-    )
-
-    if not notebooks:
-        return new_notebook(cells=[])
-
-    # Collect notebook names
-    notebook_names = [nb.get("name", "") for nb in notebooks]
-
-    # Build all_notebooks dict: name -> full nbformat notebook JSON
-    all_notebooks = {}
-    for nb in notebooks:
-        nb_blocks = nb.get("blocks", [])
-        nb_cells = []
-        for block in sorted(nb_blocks, key=lambda b: b.get("sortingKey", "")):
-            btype = block.get("type", "code")
-            content = block.get("content", "")
-            if btype == "code":
-                nb_cells.append(new_code_cell(content))
-            else:
-                nb_cells.append(new_markdown_cell(content))
-        # Use the notebook name as key
-        nb_name = nb.get("name", "")
-        all_notebooks[nb_name] = new_notebook(cells=nb_cells)
-
-    # Use first notebook's cells to render initially
-    nb0 = notebooks[0]
-    blocks = nb0.get("blocks", [])
-    cells = []
-    for block in sorted(blocks, key=lambda b: b.get("sortingKey", "")):
-        btype = block.get("type", "code")
-        content = block.get("content", "")
-        if btype == "code":
-            cells.append(new_code_cell(content))
-        else:
-            cells.append(new_markdown_cell(content))
-
-    metadata = {
-        "deepnote": {"notebook_names": notebook_names, "notebooks": all_notebooks}
-    }
-    return new_notebook(cells=cells, metadata=metadata)
-
-
-def yaml_to_ipynb_dummy(yaml_text: str) -> dict:
-    return {"nbformat": 4, "nbformat_minor": 5, "metadata": {}, "cells": []}
+from nbformat.v4 import new_notebook
 
 
 class DeepnoteContentsManager(FileContentsManager):
@@ -74,15 +18,13 @@ class DeepnoteContentsManager(FileContentsManager):
             else:
                 yaml_text = cast(str, _content)
 
-            nb_node = yaml_to_ipynb(yaml_text)
-
             model = self._base_model(path)
             model["type"] = "notebook"
             model["format"] = "json"
-            model["content"] = nb_node
+            model["content"] = new_notebook(
+                cells=[], metadata={"deepnote": {"rawYamlString": yaml_text}}
+            )
             model["writable"] = False
-            self.mark_trusted_cells(nb_node, path)
-            self.validate_notebook_model(model, validation_error={})
 
             if require_hash:
                 # Accept 2- or 3-tuple; we only need the bytes
