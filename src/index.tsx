@@ -11,6 +11,11 @@ import {
 } from '@jupyterlab/notebook';
 import { Widget } from '@lumino/widgets';
 import { HTMLSelect } from '@jupyterlab/ui-components';
+import { ContentsManager } from '@jupyterlab/services';
+import {
+  DeepnoteContentProvider,
+  deepnoteContentProviderName
+} from './deepnote-content-provider';
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-deepnote:plugin',
@@ -22,6 +27,23 @@ const plugin: JupyterFrontEndPlugin<void> = {
     notebookWidgetFactory: NotebookWidgetFactory,
     toolbarRegistry: IToolbarWidgetRegistry
   ) => {
+    const drive = (app.serviceManager.contents as ContentsManager).defaultDrive;
+    const registry = drive?.contentProviderRegistry;
+    if (!registry) {
+      // If content provider is a non-essential feature and support for JupyterLab <4.4 is desired:
+      console.error(
+        'Cannot initialize content provider: no content provider registry.'
+      );
+      return;
+    }
+    const deepnoteContentProvider = new DeepnoteContentProvider({
+      // These options are only required if extending the `RestContentProvider`.
+      apiEndpoint: '/api/contents',
+      serverSettings: app.serviceManager.serverSettings
+    });
+    registry.register(deepnoteContentProviderName, deepnoteContentProvider);
+    notebookWidgetFactory.contentProviderId = deepnoteContentProviderName;
+
     app.docRegistry.addFileType(
       {
         name: 'deepnote',
