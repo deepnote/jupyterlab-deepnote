@@ -1,5 +1,6 @@
 import { Contents, RestContentProvider } from '@jupyterlab/services';
 import { z } from 'zod';
+import { transformDeepnoteYamlToNotebookContent } from './transform-deepnote-yaml-to-notebook-content';
 
 export const deepnoteContentProviderName = 'deepnote-content-provider';
 
@@ -42,6 +43,15 @@ export class DeepnoteContentProvider extends RestContentProvider {
       return model;
     }
 
-    return model;
+    const transformedModelContent = transformDeepnoteYamlToNotebookContent(
+      validatedModelContent.data.metadata.deepnote.rawYamlString
+    );
+
+    const transformedModel = {
+      ...model,
+      content: transformedModelContent
+    };
+
+    return transformedModel;
   }
 }
