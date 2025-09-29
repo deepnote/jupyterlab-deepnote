@@ -43,9 +43,10 @@ export class DeepnoteContentProvider extends RestContentProvider {
       return model;
     }
 
-    const transformedModelContent = transformDeepnoteYamlToNotebookContent(
-      validatedModelContent.data.metadata.deepnote.rawYamlString
-    );
+    const transformedModelContent =
+      await transformDeepnoteYamlToNotebookContent(
+        validatedModelContent.data.metadata.deepnote.rawYamlString
+      );
 
     const transformedModel = {
       ...model,

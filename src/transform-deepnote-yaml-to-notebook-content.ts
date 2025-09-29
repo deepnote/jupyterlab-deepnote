@@ -1,36 +1,30 @@
-import { INotebookContent, INotebookMetadata } from '@jupyterlab/nbformat';
+import { deserializeDeepnoteFile } from './deepnote-convert/deserialize-deepnote-file';
+import { IDeepnoteNotebookContent } from './types';
+import { blankCodeCell, blankDeepnoteNotebookContent } from './fallback-data';
 
-export interface IDeepnoteNotebookMetadata extends INotebookMetadata {
-  deepnote: {
-    rawYamlString: string;
-  };
-}
-
-export interface IDeepnoteNotebookContent
-  extends Omit<INotebookContent, 'metadata'> {
-  metadata: IDeepnoteNotebookMetadata;
-}
-
-export function transformDeepnoteYamlToNotebookContent(
+export async function transformDeepnoteYamlToNotebookContent(
   yamlString: string
-): IDeepnoteNotebookContent {
-  // Placeholder implementation
-  return {
-    cells: [
-      {
-        cell_type: 'code',
-        source: '# Transformed from Deepnote YAML\n',
-        metadata: {},
-        outputs: [],
-        execution_count: null
-      }
-    ],
-    metadata: {
-      deepnote: {
-        rawYamlString: yamlString
-      }
-    },
-    nbformat: 4,
-    nbformat_minor: 0
-  };
+): Promise<IDeepnoteNotebookContent> {
+  try {
+    const deepnoteFile = await deserializeDeepnoteFile(yamlString);
+
+    const selectedNotebook = deepnoteFile.project.notebooks[0];
+
+    if (!selectedNotebook) {
+      return {
+        ...blankDeepnoteNotebookContent,
+        cells: [
+          {
+            ...blankCodeCell,
+            source: '# No notebooks found in Deepnote file.\n'
+          }
+        ]
+      };
+    }
+
+    return blankDeepnoteNotebookContent;
+  } catch (error) {
+    console.error('Failed to deserialize Deepnote file:', error);
+    throw new Error('Failed to transform Deepnote YAML to notebook content.');
+  }
 }
