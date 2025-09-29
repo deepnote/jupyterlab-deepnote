@@ -1,6 +1,18 @@
 import { Contents, RestContentProvider } from '@jupyterlab/services';
+import { z } from 'zod';
 
 export const deepnoteContentProviderName = 'deepnote-content-provider';
+
+const deepnoteNotebookSchema = z.object({
+  cells: z.array(z.any()), // or refine further with nbformat
+  metadata: z.object({
+    deepnote: z.object({
+      rawYamlString: z.string()
+    })
+  }),
+  nbformat: z.number(),
+  nbformat_minor: z.number()
+});
 
 export class DeepnoteContentProvider extends RestContentProvider {
   async get(
@@ -16,7 +28,20 @@ export class DeepnoteContentProvider extends RestContentProvider {
       return model;
     }
 
-    model.content.cells = [];
+    const validatedModelContent = deepnoteNotebookSchema.safeParse(
+      model.content
+    );
+
+    if (!validatedModelContent.success) {
+      console.error(
+        'Invalid .deepnote file content:',
+        validatedModelContent.error
+      );
+      // Return an empty notebook instead of throwing an error
+      model.content.cells = [];
+      return model;
+    }
+
     return model;
   }
 }

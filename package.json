@@ -63,7 +63,8 @@
         "@jupyterlab/notebook": "^4.4.7",
         "@jupyterlab/services": "^7.0.0",
         "@jupyterlab/settingregistry": "^4.0.0",
-        "@lumino/widgets": "^2.7.1"
+        "@lumino/widgets": "^2.7.1",
+        "zod": "^4.1.11"
     },
     "devDependencies": {
         "@jupyterlab/builder": "^4.0.0",
