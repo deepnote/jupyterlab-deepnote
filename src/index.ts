@@ -26,6 +26,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     notebookWidgetFactory: NotebookWidgetFactory,
     toolbarRegistry: IToolbarWidgetRegistry
   ) => {
+    // Register a custom contents provider for the default notebook widget factory.
     const drive = (app.serviceManager.contents as ContentsManager).defaultDrive;
     const registry = drive?.contentProviderRegistry;
     if (!registry) {
@@ -43,6 +44,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     registry.register(deepnoteContentProviderName, deepnoteContentProvider);
     notebookWidgetFactory.contentProviderId = deepnoteContentProviderName;
 
+    // Register .deepnote file type and set the notebook widget factory as the default.
     app.docRegistry.addFileType(
       {
         name: 'deepnote',
@@ -54,12 +56,12 @@ const plugin: JupyterFrontEndPlugin<void> = {
       },
       [notebookWidgetFactory.name]
     );
-
     app.docRegistry.setDefaultWidgetFactory(
       'deepnote',
       notebookWidgetFactory.name
     );
 
+    // Add a toolbar item to switch between notebooks in a .deepnote file.
     toolbarRegistry.addFactory<NotebookPanel>(
       notebookWidgetFactory.name,
       'deepnote:switch-notebook',
