@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+// Below schema has been modified from the original deepnote-internal schema
+
 // Source:
 // deepnote-internal
 //
@@ -8,6 +10,20 @@ import { z } from 'zod';
 
 // Commit SHA:
 // 3ec11e794c6aca998ef88d894f18e4611586cc30
+
+export const deepnoteFileBlockSchema = z.object({
+  blockGroup: z.string().optional(),
+  content: z.string().optional(),
+  executionCount: z.number().optional(),
+  id: z.string(),
+  metadata: z.record(z.string(), z.any()).optional(),
+  outputs: z.array(z.any()).optional(),
+  sortingKey: z.string(),
+  type: z.string(),
+  version: z.number().optional()
+});
+
+export type DeepnoteFileBlock = z.infer<typeof deepnoteFileBlockSchema>;
 
 export const deepnoteFileSchema = z.object({
   metadata: z.object({
@@ -33,19 +49,7 @@ export const deepnoteFileSchema = z.object({
     name: z.string(),
     notebooks: z.array(
       z.object({
-        blocks: z.array(
-          z.object({
-            blockGroup: z.string().optional(),
-            content: z.string().optional(),
-            executionCount: z.number().optional(),
-            id: z.string(),
-            metadata: z.record(z.string(), z.any()).optional(),
-            outputs: z.array(z.any()).optional(),
-            sortingKey: z.string(),
-            type: z.string(),
-            version: z.number().optional()
-          })
-        ),
+        blocks: z.array(deepnoteFileBlockSchema),
         executionMode: z.enum(['block', 'downstream']).optional(),
         id: z.string(),
         isModule: z.boolean().optional(),
