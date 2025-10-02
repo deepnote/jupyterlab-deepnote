@@ -19,5 +19,5 @@ jobs:
         uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
         
       - name: Check Licenses
-        run: jlpm check-licenses
+        run: yarn check-licenses
 
