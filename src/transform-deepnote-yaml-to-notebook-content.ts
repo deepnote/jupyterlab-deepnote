@@ -1,7 +1,6 @@
 import { deserializeDeepnoteFile } from './deepnote-convert/deserialize-deepnote-file';
 import { IDeepnoteNotebookContent } from './types';
 import { blankCodeCell, blankDeepnoteNotebookContent } from './fallback-data';
-import { convertDeepnoteCellToJupyterCell } from './deepnote-convert/convert-deepnote-cell-to-jupyter-cell';
 
 export async function transformDeepnoteYamlToNotebookContent(
   yamlString: string
@@ -23,12 +22,7 @@ export async function transformDeepnoteYamlToNotebookContent(
       };
     }
 
-    const cells = selectedNotebook.blocks.map(convertDeepnoteCellToJupyterCell);
-
-    return {
-      ...blankDeepnoteNotebookContent,
-      cells
-    };
+    return blankDeepnoteNotebookContent;
   } catch (error) {
     console.error('Failed to deserialize Deepnote file:', error);
     throw new Error('Failed to transform Deepnote YAML to notebook content.');
