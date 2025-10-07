@@ -1,6 +1,6 @@
-import { deserializeDeepnoteFile } from './deepnote-convert/deserialize-deepnote-file';
 import { IDeepnoteNotebookContent } from './types';
 import { blankCodeCell, blankDeepnoteNotebookContent } from './fallback-data';
+import { deserializeDeepnoteFile } from '@deepnote/blocks';
 
 export async function transformDeepnoteYamlToNotebookContent(
   yamlString: string

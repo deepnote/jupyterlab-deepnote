@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { CELL_TYPES } from './types';
 
 // Below schema has been modified from the original deepnote-internal schema
 
@@ -20,7 +19,7 @@ export const deepnoteFileBlockSchema = z.object({
   metadata: z.record(z.string(), z.any()).optional(),
   outputs: z.array(z.any()).optional(),
   sortingKey: z.string(),
-  type: z.enum(CELL_TYPES),
+  type: z.string(),
   version: z.number().optional()
 });
 

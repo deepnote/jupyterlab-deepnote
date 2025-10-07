@@ -1577,6 +1577,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@deepnote/blocks@file:/Users/work/repos/deepnote/deepnote/packages/blocks::locator=jupyterlab-deepnote%40workspace%3A.":
+  version: 1.0.0
+  resolution: "@deepnote/blocks@file:/Users/work/repos/deepnote/deepnote/packages/blocks#/Users/work/repos/deepnote/deepnote/packages/blocks::hash=193053&locator=jupyterlab-deepnote%40workspace%3A."
+  dependencies:
+    ts-dedent: ^2.2.0
+    yaml: ^2.8.1
+    zod: ^4.1.12
+  checksum: d47ee3fe23825c2f3012c50cd87216a4099d0abb07a46de67c50650943448baf624c3ec93e9a4fc6626995c9fae33d3fc3500e37e3044d99c9660887ea88e2de
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -6794,6 +6805,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jupyterlab-deepnote@workspace:."
   dependencies:
+    "@deepnote/blocks": "file:/Users/work/repos/deepnote/deepnote/packages/blocks"
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/builder": ^4.0.0
     "@jupyterlab/coreutils": ^6.0.0
@@ -9018,6 +9030,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-dedent@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "ts-dedent@npm:2.2.0"
+  checksum: 93ed8f7878b6d5ed3c08d99b740010eede6bccfe64bce61c5a4da06a2c17d6ddbb80a8c49c2d15251de7594a4f93ffa21dd10e7be75ef66a4dc9951b4a94e2af
+  languageName: node
+  linkType: hard
+
 "ts-jest@npm:^29.1.0":
   version: 29.4.1
   resolution: "ts-jest@npm:29.4.1"
@@ -9821,5 +9840,12 @@ __metadata:
   version: 4.1.11
   resolution: "zod@npm:4.1.11"
   checksum: 022d59f85ebe054835fbcdc96a93c01479a64321104f846cb5644812c91e00d17ae3479f823956ec9b04e4351dd32841e1f12c567e81bc43f6e21ef5cc02ce3c
+  languageName: node
+  linkType: hard
+
+"zod@npm:^4.1.12":
+  version: 4.1.12
+  resolution: "zod@npm:4.1.12"
+  checksum: 91174acc7d2ca5572ad522643474ddd60640cf6877b5d76e5d583eb25e3c4072c6f5eb92ab94f231ec5ce61c6acdfc3e0166de45fb1005b1ea54986b026b765f
   languageName: node
   linkType: hard
