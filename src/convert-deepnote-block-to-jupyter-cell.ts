@@ -1,31 +1,47 @@
-import { convertCellTypeToJupyter } from './deepnote-convert/convert-cell-type-to-jupyter';
-import { DeepnoteFileBlock } from './deepnote-convert/deepnote-file-schema';
+import {
+  createMarkdown,
+  createPythonCode,
+  DeepnoteBlock
+} from '@deepnote/blocks';
+import _cloneDeep from 'lodash/cloneDeep';
 import { ICodeCell, IMarkdownCell } from '@jupyterlab/nbformat';
+import { convertDeepnoteBlockTypeToJupyter } from './convert-deepnote-block-type-to-jupyter';
 
-export function convertDeepnoteBlockToJupyterCell(
-  block: DeepnoteFileBlock
-): ICodeCell | IMarkdownCell {
-  const jupyterCellType = convertCellTypeToJupyter(block.type);
+export function convertDeepnoteBlockToJupyterCell(block: DeepnoteBlock) {
+  const blockCopy = _cloneDeep(block);
+  const jupyterCellMetadata = { ...blockCopy.metadata, cell_id: blockCopy.id };
+  const jupyterCellType = convertDeepnoteBlockTypeToJupyter(blockCopy.type);
+
   if (jupyterCellType === 'code') {
-    return {
+    const blockOutputs = blockCopy.outputs ?? [];
+
+    if (Array.isArray(blockOutputs)) {
+      blockOutputs.forEach(output => {
+        delete output.truncated;
+      });
+    }
+
+    const source = createPythonCode(blockCopy);
+
+    const jupyterCell: ICodeCell = {
       cell_type: 'code',
-      source: block.content || '',
-      metadata: {},
-      outputs: block.outputs || [],
-      execution_count: block.executionCount || null
+      metadata: jupyterCellMetadata,
+      execution_count:
+        blockCopy.executionCount !== undefined
+          ? blockCopy.executionCount
+          : null,
+      outputs: blockOutputs,
+      source
     };
-  } else if (jupyterCellType === 'markdown') {
-    return {
-      cell_type: 'markdown',
-      source: block.content || '',
-      metadata: {}
-    };
+    return jupyterCell;
   } else {
-    // For unsupported block types, return a markdown cell indicating it's unsupported
-    return {
+    // Markdown cell
+    const source = createMarkdown(blockCopy);
+    const jupyterCell: IMarkdownCell = {
       cell_type: 'markdown',
-      source: `# Unsupported block type: ${block.type}\n`,
-      metadata: {}
+      metadata: {},
+      source
     };
+    return jupyterCell;
   }
 }

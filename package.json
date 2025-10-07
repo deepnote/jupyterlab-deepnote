@@ -58,13 +58,15 @@
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@deepnote/blocks": "file:/Users/work/repos/deepnote/deepnote/packages/blocks",
+        "@deepnote/blocks": "^1.0.0",
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/coreutils": "^6.0.0",
         "@jupyterlab/notebook": "^4.4.7",
         "@jupyterlab/services": "^7.0.0",
         "@jupyterlab/settingregistry": "^4.0.0",
         "@lumino/widgets": "^2.7.1",
+        "@types/lodash": "^4.17.20",
+        "lodash": "^4.17.21",
         "yaml": "^2.8.1",
         "zod": "^4.1.11"
     },

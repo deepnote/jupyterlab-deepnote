@@ -1,5 +1,5 @@
 import { INotebookContent, INotebookMetadata } from '@jupyterlab/nbformat';
-import { DeepnoteFile } from './deepnote-convert/deepnote-file-schema';
+import type { DeepnoteFile } from '@deepnote/blocks';
 
 export interface IDeepnoteNotebookMetadata extends INotebookMetadata {
   deepnote: {
