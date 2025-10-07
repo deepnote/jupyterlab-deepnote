@@ -1,35 +1,7 @@
 import { deserializeDeepnoteFile } from './deepnote-convert/deserialize-deepnote-file';
 import { IDeepnoteNotebookContent } from './types';
 import { blankCodeCell, blankDeepnoteNotebookContent } from './fallback-data';
-import { DeepnoteFileBlock } from './deepnote-convert/deepnote-file-schema';
-import { ICodeCell, IMarkdownCell } from '@jupyterlab/nbformat';
-
-function convertDeepnoteBlockToJupyterCell(
-  block: DeepnoteFileBlock
-): ICodeCell | IMarkdownCell {
-  if (block.type === 'code') {
-    return {
-      cell_type: 'code',
-      source: block.content || '',
-      metadata: {},
-      outputs: block.outputs || [],
-      execution_count: block.executionCount || null
-    };
-  } else if (block.type === 'markdown') {
-    return {
-      cell_type: 'markdown',
-      source: block.content || '',
-      metadata: {}
-    };
-  } else {
-    // For unsupported block types, return a markdown cell indicating it's unsupported
-    return {
-      cell_type: 'markdown',
-      source: `# Unsupported block type: ${block.type}\n`,
-      metadata: {}
-    };
-  }
-}
+import { convertDeepnoteCellToJupyterCell } from './deepnote-convert/convert-deepnote-cell-to-jupyter-cell';
 
 export async function transformDeepnoteYamlToNotebookContent(
   yamlString: string
@@ -51,9 +23,7 @@ export async function transformDeepnoteYamlToNotebookContent(
       };
     }
 
-    const cells = selectedNotebook.blocks.map(
-      convertDeepnoteBlockToJupyterCell
-    );
+    const cells = selectedNotebook.blocks.map(convertDeepnoteCellToJupyterCell);
 
     return {
       ...blankDeepnoteNotebookContent,
