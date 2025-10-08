@@ -61,6 +61,8 @@ jobs:
           pip install build
           python -m build
           pip uninstall -y "jupyterlab_deepnote" jupyterlab
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload extension packages
         uses: actions/upload-artifact@v4
