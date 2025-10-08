@@ -29,6 +29,8 @@ jobs:
           set -eux
           jlpm
           jlpm run lint:check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test the extension
         run: |
