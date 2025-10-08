@@ -26,10 +26,7 @@ export function convertDeepnoteBlockToJupyterCell(block: DeepnoteBlock) {
     const jupyterCell: ICodeCell = {
       cell_type: 'code',
       metadata: jupyterCellMetadata,
-      execution_count:
-        blockCopy.executionCount !== undefined
-          ? blockCopy.executionCount
-          : null,
+      execution_count: blockCopy.executionCount ?? null,
       outputs: blockOutputs,
       source
     };
