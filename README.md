@@ -72,6 +72,22 @@ Install `jupyterlab`. The extension package itself doesn’t depend on `jupyterl
 uv pip install jupyterlab
 ```
 
+**Configure Access to @deepnote/blocks Package**
+
+The `@deepnote/blocks` package is published on GitHub Packages. To install it, you'll need to authenticate with GitHub:
+
+1. Create a GitHub Personal Access Token (classic) with `read:packages` scope:
+   - Go to https://github.com/settings/tokens
+   - Click "Generate new token (classic)"
+   - Select the `read:packages` scope
+   - Generate and copy the token
+
+2. Set the `GITHUB_TOKEN` environment variable to ensure `jlpm` (which is a wrapper around Yarn) can download the `@deepnote/blocks` package from the GitHub package registry. You can set the variable in `.zshrc` or manually like:
+   ```shell
+   export GITHUB_TOKEN=your_token_here
+   ```
+   Replace `YOUR_TOKEN_HERE` with your actual token.
+
 Install the extension package in editable mode. It installs the package’s dependencies, too:
 
 ```shell
