@@ -58,7 +58,7 @@
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@deepnote/blocks": "^1.0.0",
+        "@deepnote/blocks": "^1.1.0",
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/coreutils": "^6.0.0",
         "@jupyterlab/notebook": "^4.4.7",

@@ -1577,12 +1577,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deepnote/blocks@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@deepnote/blocks@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40deepnote%2Fblocks%2F1.0.0%2Fbbad3593046ed93df89035400c7e7d85a4742494"
+"@deepnote/blocks@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@deepnote/blocks@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40deepnote%2Fblocks%2F1.1.0%2Feaed628f944e73fe64a6a9fd5f93b2bcfe130b44"
   dependencies:
     ts-dedent: ^2.2.0
-  checksum: 69339b4c5d5b1da33c0deb248714b1aa151f9e80f623ba3a5b16669273fd0516db6c811b59c8cec3add16506e5bcf4b87c944744aa7d7761682139d3c556a06f
+    yaml: ^2.8.1
+    zod: ^4.1.12
+  checksum: 00ceb43c10c9c50e921bb83e2cd4b2cb8316f61edc1ebc89e3588d03ebe15bd5d2f9b2af4402c15e2b9e49a7a0b5603509103b86fc0814b19f6d83a40d82ce87
   languageName: node
   linkType: hard
 
@@ -6810,7 +6812,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jupyterlab-deepnote@workspace:."
   dependencies:
-    "@deepnote/blocks": ^1.0.0
+    "@deepnote/blocks": ^1.1.0
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/builder": ^4.0.0
     "@jupyterlab/coreutils": ^6.0.0
@@ -9847,5 +9849,12 @@ __metadata:
   version: 4.1.11
   resolution: "zod@npm:4.1.11"
   checksum: 022d59f85ebe054835fbcdc96a93c01479a64321104f846cb5644812c91e00d17ae3479f823956ec9b04e4351dd32841e1f12c567e81bc43f6e21ef5cc02ce3c
+  languageName: node
+  linkType: hard
+
+"zod@npm:^4.1.12":
+  version: 4.1.12
+  resolution: "zod@npm:4.1.12"
+  checksum: 91174acc7d2ca5572ad522643474ddd60640cf6877b5d76e5d583eb25e3c4072c6f5eb92ab94f231ec5ce61c6acdfc3e0166de45fb1005b1ea54986b026b765f
   languageName: node
   linkType: hard
