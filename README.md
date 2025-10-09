@@ -12,7 +12,7 @@ for the frontend extension.
 
 ## Install
 
-To install the extension, execute:
+To install the extension:
 
 ```bash
 pip install jupyterlab_deepnote
