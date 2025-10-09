@@ -17,7 +17,7 @@ export async function transformDeepnoteYamlToNotebookContent(
         cells: [
           {
             ...blankCodeCell,
-            source: '# No notebooks found in Deepnote file.\n'
+            source: '# No notebooks found in the Deepnote file.\n'
           }
         ]
       };
