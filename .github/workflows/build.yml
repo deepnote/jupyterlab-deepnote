@@ -29,11 +29,15 @@ jobs:
           set -eux
           jlpm
           jlpm run lint:check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test the extension
         run: |
           set -eux
           jlpm run test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the extension
         run: |
@@ -47,6 +51,8 @@ jobs:
           jupyter labextension list
           jupyter labextension list 2>&1 | grep -ie "jupyterlab-deepnote.*OK"
           python -m jupyterlab.browser_check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Package the extension
         run: |
@@ -55,6 +61,8 @@ jobs:
           pip install build
           python -m build
           pip uninstall -y "jupyterlab_deepnote" jupyterlab
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload extension packages
         uses: actions/upload-artifact@v4
