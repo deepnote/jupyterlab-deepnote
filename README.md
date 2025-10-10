@@ -1,6 +1,6 @@
 # jupyterlab_deepnote
 
-[![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
+[![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/deepnote/jupyterlab-deepnote/branch/main/graph/badge.svg)](https://codecov.io/gh/deepnote/jupyterlab-deepnote)
 
 A Deepnote extension for JupyterLab
