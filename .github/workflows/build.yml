@@ -44,7 +44,8 @@ jobs:
           set -eux
           python -m pip install .[test]
 
-          pytest -vv -r ap --cov jupyterlab_deepnote
+          mkdir -p coverage
+          pytest -vv -r ap --cov jupyterlab_deepnote --cov-report=xml --junit-xml=coverage/pytest-results.xml
           jupyter server extension list
           jupyter server extension list 2>&1 | grep -ie "jupyterlab_deepnote.*OK"
 
@@ -53,6 +54,21 @@ jobs:
           python -m jupyterlab.browser_check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml,coverage/lcov.info
+          fail_ci_if_error: true
+
+      - name: Upload test results to Codecov
+        if: '!cancelled()'
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/pytest-results.xml,coverage/junit.xml
+          fail_ci_if_error: true
 
       - name: Package the extension
         run: |
@@ -169,3 +185,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
       - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
+        with:
+          ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/'

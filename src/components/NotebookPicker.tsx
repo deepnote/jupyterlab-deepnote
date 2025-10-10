@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactWidget } from '@jupyterlab/apputils';
 import { NotebookPanel } from '@jupyterlab/notebook';
 import { HTMLSelect } from '@jupyterlab/ui-components';
+import { deepnoteMetadataSchema } from '../types';
 
 export class NotebookPicker extends ReactWidget {
   private selected: string | null = null;
@@ -31,22 +32,30 @@ export class NotebookPicker extends ReactWidget {
 
     const selected = event.target.value;
     const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
-    const notebooks = deepnoteMetadata?.notebooks;
+    const deepnoteMetadataValidated =
+      deepnoteMetadataSchema.safeParse(deepnoteMetadata);
 
-    if (notebooks && selected in notebooks) {
-      // clone the notebook JSON
-      const newModelData = { ...notebooks[selected] };
+    if (!deepnoteMetadataValidated.success) {
+      console.error(
+        'Invalid deepnote metadata:',
+        deepnoteMetadataValidated.error
+      );
+      return;
+    }
 
-      // preserve deepnote metadata *without* re-inserting all notebooks
-      newModelData.metadata = {
-        ...(newModelData.metadata ?? {}),
-        deepnote: {
-          notebook_names: deepnoteMetadata?.notebook_names ?? [],
-          notebooks: deepnoteMetadata?.notebooks ?? {}
-        }
-      };
+    const notebooks = deepnoteMetadataValidated.data.notebooks;
 
-      model.fromJSON(newModelData);
+    if (selected in notebooks) {
+      model.fromJSON({
+        cells: notebooks[selected]?.cells ?? [],
+        metadata: {
+          deepnote: {
+            notebooks
+          }
+        },
+        nbformat: 4,
+        nbformat_minor: 0
+      });
       model.dirty = false;
     }
 
@@ -56,12 +65,13 @@ export class NotebookPicker extends ReactWidget {
 
   render(): JSX.Element {
     const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
-    const metadataNames = deepnoteMetadata?.notebook_names;
-    const names =
-      Array.isArray(metadataNames) &&
-      metadataNames.every(n => typeof n === 'string')
-        ? metadataNames
-        : [];
+
+    const deepnoteMetadataValidated =
+      deepnoteMetadataSchema.safeParse(deepnoteMetadata);
+
+    const names = deepnoteMetadataValidated.success
+      ? Object.values(deepnoteMetadataValidated.data.notebooks).map(n => n.name)
+      : [];
 
     return (
       <HTMLSelect

@@ -123,3 +123,9 @@ dmypy.json
 
 # Yarn cache
 .yarn/
+# Qlty cache directories
+.qlty/cache
+.qlty/logs
+.qlty/out
+.qlty/plugin_cachedir
+.qlty/results
