@@ -82,7 +82,7 @@ The `@deepnote/blocks` package is published on GitHub Packages. To install it, y
    - Select the `read:packages` scope
    - Generate and copy the token
 
-2. Set the `GITHUB_TOKEN` environment variable to ensure `jlpm` (which is a wrapper around Yarn) can download the `@deepnote/blocks` package from the GitHub package registry. You can set the variable in `.zshrc` or manually like:
+2. Set the `GITHUB_TOKEN` environment variable to ensure `jlpm` (which is a wrapper around Yarn) can download the `@deepnote/blocks` package from the GitHub package registry. You can export the variable in `.zshrc` (or by reading a `~/.env` file):
    ```shell
    export GITHUB_TOKEN=your_token_here
    ```
