@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run audit for production dependencies
-        run: jlpm audit --groups "dependencies"
+        run: jlpm npm audit --environment production
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -78,7 +78,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run audit for all dependencies
-        run: jlpm audit
+        run: jlpm npm audit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
