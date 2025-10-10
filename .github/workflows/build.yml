@@ -186,4 +186,4 @@ jobs:
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
       - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
         with:
-          ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/'
+          ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/ https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg'
