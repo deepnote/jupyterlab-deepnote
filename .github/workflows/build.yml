@@ -68,6 +68,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/pytest-results.xml,coverage/junit.xml
+          fail_ci_if_error: true
 
       - name: Package the extension
         run: |
