@@ -30,6 +30,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run spell check
-        run: jlpm run spell-check
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx cspell@9.2.1 "**/*.{md,txt,json,js,ts,tsx,jsx,yml,yaml}"

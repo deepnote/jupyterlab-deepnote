@@ -53,8 +53,6 @@
         "stylelint": "jlpm stylelint:check --fix",
         "stylelint:check": "stylelint --cache \"style/**/*.css\"",
         "test": "jest --coverage",
-        "spell-check": "cspell \"**/*.{md,txt,json,js,ts,tsx,jsx,yml,yaml}\"",
-        "spell-check:fix": "cspell \"**/*.{md,txt,json,js,ts,tsx,jsx,yml,yaml}\" --no-exit-code --show-suggestions",
         "watch": "run-p watch:src watch:labextension",
         "watch:src": "tsc -w --sourceMap",
         "watch:labextension": "jupyter labextension watch ."
@@ -72,7 +70,6 @@
         "zod": "^4.1.11"
     },
     "devDependencies": {
-        "cspell": "9.2.1",
         "@jupyterlab/builder": "^4.0.0",
         "@jupyterlab/testutils": "^4.0.0",
         "@types/jest": "^29.2.0",
