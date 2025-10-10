@@ -44,6 +44,7 @@ jobs:
           set -eux
           python -m pip install .[test]
 
+          mkdir -p coverage
           pytest -vv -r ap --cov jupyterlab_deepnote --cov-report=xml --junit-xml=coverage/pytest-results.xml
           jupyter server extension list
           jupyter server extension list 2>&1 | grep -ie "jupyterlab_deepnote.*OK"
@@ -58,7 +59,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml,./coverage/lcov.info
+          files: coverage.xml,coverage/lcov.info
           fail_ci_if_error: false
 
       - name: Upload test results to Codecov

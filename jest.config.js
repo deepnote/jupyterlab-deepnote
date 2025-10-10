@@ -22,8 +22,12 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/**/.ipynb_checkpoints/*'
   ],
+  coverageDirectory: './coverage',
   coverageReporters: ['lcov', 'text'],
-  reporters: ['default', 'jest-junit'],
+  reporters: [
+    'default',
+    ['jest-junit', { outputDirectory: './coverage', outputName: 'junit.xml' }]
+  ],
   testRegex: 'src/.*/.*.spec.ts[x]?$',
   transformIgnorePatterns: [`/node_modules/(?!${esModules}).+`]
 };
