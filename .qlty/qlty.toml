@@ -26,6 +26,11 @@ exclude_patterns = [
   "**/*.min.js",
   "**/*.min.css",
   ".git/**",
+  ".venv/**",
+  "venv/**",
+  ".tox/**",
+  ".mypy_cache/**",
+  "**/__pycache__/**",
 ]
 
 # Code Smells Configuration
