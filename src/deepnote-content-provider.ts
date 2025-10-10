@@ -4,7 +4,7 @@ import { transformDeepnoteYamlToNotebookContent } from './transform-deepnote-yam
 
 export const deepnoteContentProviderName = 'deepnote-content-provider';
 
-const deepnoteNotebookSchema = z.object({
+const deepnoteFileFromServerSchema = z.object({
   cells: z.array(z.any()), // or refine further with nbformat
   metadata: z.object({
     deepnote: z.object({
@@ -29,7 +29,7 @@ export class DeepnoteContentProvider extends RestContentProvider {
       return model;
     }
 
-    const validatedModelContent = deepnoteNotebookSchema.safeParse(
+    const validatedModelContent = deepnoteFileFromServerSchema.safeParse(
       model.content
     );
 
@@ -43,6 +43,7 @@ export class DeepnoteContentProvider extends RestContentProvider {
       return model;
     }
 
+    // Transform the Deepnote YAML to Jupyter notebook content
     const transformedModelContent =
       await transformDeepnoteYamlToNotebookContent(
         validatedModelContent.data.metadata.deepnote.rawYamlString
