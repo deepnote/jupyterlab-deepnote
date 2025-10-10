@@ -21,8 +21,7 @@ export const blankDeepnoteNotebookContent: IDeepnoteNotebookContent = {
   ],
   metadata: {
     deepnote: {
-      rawYamlString: null,
-      deepnoteFile: null
+      notebooks: {}
     }
   },
   nbformat: 4,
