@@ -27,10 +27,5 @@ jobs:
       - name: Install JupyterLab
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
 
-      - name: Install dependencies
-        run: jlpm install --frozen-lockfile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Run spell check
         run: npx cspell@9.2.1 "**/*.{md,txt,json,js,ts,tsx,jsx,yml,yaml}"
