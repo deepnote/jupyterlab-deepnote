@@ -31,4 +31,3 @@ def _load_jupyter_server_extension(server_app):
     setup_handlers(server_app.web_app)
     name = "jupyterlab_deepnote"
     server_app.log.info(f"Registered {name} server extension")
-    server_app.contents_manager = DeepnoteContentsManager(parent=server_app)
