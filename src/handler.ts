@@ -1,6 +1,6 @@
-import { URLExt } from '@jupyterlab/coreutils';
+import { URLExt } from '@jupyterlab/coreutils'
 
-import { ServerConnection } from '@jupyterlab/services';
+import { ServerConnection } from '@jupyterlab/services'
 
 /**
  * Call the API extension
@@ -9,38 +9,35 @@ import { ServerConnection } from '@jupyterlab/services';
  * @param init Initial values for the request
  * @returns The response body interpreted as JSON
  */
-export async function requestAPI<T>(
-  endPoint = '',
-  init: RequestInit = {}
-): Promise<T> {
+export async function requestAPI<T>(endPoint = '', init: RequestInit = {}): Promise<T> {
   // Make request to Jupyter API
-  const settings = ServerConnection.makeSettings();
+  const settings = ServerConnection.makeSettings()
   const requestUrl = URLExt.join(
     settings.baseUrl,
     'jupyterlab-deepnote', // API Namespace
     endPoint
-  );
+  )
 
-  let response: Response;
+  let response: Response
   try {
-    response = await ServerConnection.makeRequest(requestUrl, init, settings);
+    response = await ServerConnection.makeRequest(requestUrl, init, settings)
   } catch (error) {
-    throw new ServerConnection.NetworkError(error as any);
+    throw new ServerConnection.NetworkError(error as Error)
   }
 
-  let data: any = await response.text();
+  const dataText = await response.text()
+  let data: unknown = dataText
 
-  if (data.length > 0) {
+  if (dataText.length > 0) {
     try {
-      data = JSON.parse(data);
-    } catch (error) {
-      console.log('Not a JSON response body.', response);
-    }
+      data = JSON.parse(dataText)
+    } catch (_error) {}
   }
 
   if (!response.ok) {
-    throw new ServerConnection.ResponseError(response, data.message || data);
+    const errorData = data as { message?: string }
+    throw new ServerConnection.ResponseError(response, errorData.message || dataText)
   }
 
-  return data;
+  return data as T
 }

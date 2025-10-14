@@ -13,20 +13,8 @@ export function convertDeepnoteBlockTypeToJupyter(blockType: string) {
     case 'input-date':
     case 'input-slider':
     case 'visualization':
-      return 'code';
-
-    case 'markdown':
-    case 'text-cell-h1':
-    case 'text-cell-h3':
-    case 'text-cell-h2':
-    case 'text-cell-p':
-    case 'text-cell-bullet':
-    case 'text-cell-todo':
-    case 'text-cell-callout':
-    case 'image':
-    case 'button':
-    case 'separator':
+      return 'code'
     default:
-      return 'markdown';
+      return 'markdown'
   }
 }

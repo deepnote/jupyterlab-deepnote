@@ -1,7 +1,2 @@
-node_modules
-**/node_modules
-**/lib
-**/package.json
-!/package.json
-jupyterlab_deepnote
-.venv
+CODEOWNERS
+pnpm-lock.yaml

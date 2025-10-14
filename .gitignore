@@ -1,131 +1,268 @@
-*.bundle.*
-lib/
-node_modules/
-*.log
-.eslintcache
-.stylelintcache
-*.egg-info/
-.ipynb_checkpoints
-*.tsbuildinfo
-jupyterlab_deepnote/labextension
-# Version file is handled by hatchling
-jupyterlab_deepnote/_version.py
 
-# Integration tests
-ui-tests/test-results/
-ui-tests/playwright-report/
 
-# Created by https://www.gitignore.io/api/python
-# Edit at https://www.gitignore.io/?templates=python
 
-### Python ###
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
 
-# C extensions
-*.so
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-.installed.cfg
-*.egg
-MANIFEST
 
-# PyInstaller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  Usually these files are written by a python script from a template
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# Biome cache
+# Biome cache
+# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL files
+# C extensions
+# C extensions
+# Created by https://www.gitignore.io/api/python
+# Created by https://www.gitignore.io/api/python
+# Distribution / packaging
+# Distribution / packaging
+# Edit at https://www.gitignore.io/?templates=python
+# Edit at https://www.gitignore.io/?templates=python
+# End of https://www.gitignore.io/api/python
+# End of https://www.gitignore.io/api/python
 # Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage/
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
+# Installer logs
+# Integration tests
+# Integration tests
+# Mr Developer
+# Mr Developer
+# OSX files
+# OSX files
+# PyBuilder
+# PyBuilder
+# PyInstaller
+# PyInstaller
+# Pyre type checker
+# Pyre type checker
+# Qlty cache directories
+# Qlty cache directories
+# Rope project settings
+# Rope project settings
+# SageMath parsed files
+# SageMath parsed files
+# Scrapy stuff:
+# Scrapy stuff:
+# Sphinx documentation
+# Sphinx documentation
+# Spyder project settings
+# Spyder project settings
 # Translations
+# Translations
+# Unit test / coverage reports
+# Unit test / coverage reports
+# Version file is handled by hatchling
+# Version file is handled by hatchling
+# Yarn cache
+# Yarn cache
+# celery beat schedule file
+# celery beat schedule file
+# mkdocs documentation
+# mkdocs documentation
+# mypy
+# mypy
+# pyenv
+# pyenv
+### Python ###
+### Python ###
+*$py.class
+*$py.class
+*.bundle.*
+*.bundle.*
+*.cover
+*.cover
+*.egg
+*.egg
+*.egg-info/
+*.egg-info/
+*.log
+*.log
+*.manifest
+*.manifest
+*.mo
 *.mo
 *.pot
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
+*.pot
+*.py[cod]
+*.py[cod]
 *.sage.py
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# Mr Developer
+*.sage.py
+*.so
+*.so
+*.spec
+*.spec
+*.tsbuildinfo
+*.tsbuildinfo
+.DS_Store
+.DS_Store
+.Python
+.Python
+.biome/
+.biome/
+.cache
+.cache
+.coverage
+.coverage
+.coverage.*
+.coverage.*
+.dmypy.json
+.dmypy.json
+.eggs/
+.eggs/
+.eslintcache
+.eslintcache
+.hypothesis/
+.hypothesis/
+.installed.cfg
+.installed.cfg
+.ipynb_checkpoints
+.ipynb_checkpoints
 .mr.developer.cfg
+.mr.developer.cfg
+.mypy_cache/
+.mypy_cache/
+.nox/
+.nox/
+.project
 .project
 .pydevproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
+.pydevproject
 .pyre/
-
-# End of https://www.gitignore.io/api/python
-
-# OSX files
-.DS_Store
-
-# Yarn cache
-.yarn/
-# Qlty cache directories
+.pyre/
+.pytest_cache/
+.pytest_cache/
+.python-version
+.python-version
+.qlty/cache
 .qlty/cache
 .qlty/logs
+.qlty/logs
+.qlty/out
 .qlty/out
 .qlty/plugin_cachedir
+.qlty/plugin_cachedir
 .qlty/results
+.qlty/results
+.ropeproject
+.ropeproject
+.scrapy
+.scrapy
+.spyderproject
+.spyderproject
+.spyproject
+.spyproject
+.stylelintcache
+.stylelintcache
+.tox/
+.tox/
+.yarn/
+.yarn/
+/site
+/site
+MANIFEST
+MANIFEST
+__pycache__/
+__pycache__/
+build/
+build/
+celerybeat-schedule
+celerybeat-schedule
+coverage.xml
+coverage.xml
+coverage/
+coverage/
+develop-eggs/
+develop-eggs/
+dist/
+dist/
+dmypy.json
+dmypy.json
+docs/_build/
+docs/_build/
+downloads/
+downloads/
+eggs/
+eggs/
+htmlcov/
+htmlcov/
+jupyterlab_deepnote/_version.py
+jupyterlab_deepnote/_version.py
+jupyterlab_deepnote/labextension
+jupyterlab_deepnote/labextension
+lib/
+lib/
+lib/
+lib/
+lib64/
+lib64/
+node_modules/
+node_modules/
+nosetests.xml
+nosetests.xml
+parts/
+parts/
+pip-delete-this-directory.txt
+pip-delete-this-directory.txt
+pip-log.txt
+pip-log.txt
+pip-wheel-metadata/
+pip-wheel-metadata/
+sdist/
+sdist/
+share/python-wheels/
+share/python-wheels/
+target/
+target/
+ui-tests/playwright-report/
+ui-tests/playwright-report/
+ui-tests/test-results/
+ui-tests/test-results/
+var/
+var/
+wheels/
+wheels/

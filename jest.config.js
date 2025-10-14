@@ -1,4 +1,4 @@
-const jestJupyterLab = require('@jupyterlab/testutils/lib/jest-config');
+const jestJupyterLab = require('@jupyterlab/testutils/lib/jest-config')
 
 const esModules = [
   '@codemirror',
@@ -9,25 +9,18 @@ const esModules = [
   'vscode-ws-jsonrpc',
   'y-protocols',
   'y-websocket',
-  'yjs'
-].join('|');
+  'yjs',
+].join('|')
 
-const baseConfig = jestJupyterLab(__dirname);
+const baseConfig = jestJupyterLab(__dirname)
 
 module.exports = {
   ...baseConfig,
   automock: false,
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/**/*.d.ts',
-    '!src/**/.ipynb_checkpoints/*'
-  ],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts', '!src/**/.ipynb_checkpoints/*'],
   coverageDirectory: './coverage',
   coverageReporters: ['lcov', 'text'],
-  reporters: [
-    'default',
-    ['jest-junit', { outputDirectory: './coverage', outputName: 'junit.xml' }]
-  ],
+  reporters: ['default', ['jest-junit', { outputDirectory: './coverage', outputName: 'junit.xml' }]],
   testRegex: 'src/.*/.*.spec.ts[x]?$',
-  transformIgnorePatterns: [`/node_modules/(?!${esModules}).+`]
-};
+  transformIgnorePatterns: [`/node_modules/(?!${esModules}).+`],
+}

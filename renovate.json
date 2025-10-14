@@ -7,13 +7,7 @@
     "pinDigests": true
   },
   "extends": ["config:recommended"],
-  "ignorePaths": [
-    "**/dist/**",
-    "**/node_modules/**",
-    "**/tmp/**",
-    "lib/**",
-    "jupyterlab_deepnote/labextension/**"
-  ],
+  "ignorePaths": ["**/dist/**", "**/node_modules/**", "**/tmp/**", "lib/**", "jupyterlab_deepnote/labextension/**"],
   "docker-compose": {
     "enabled": false
   },
