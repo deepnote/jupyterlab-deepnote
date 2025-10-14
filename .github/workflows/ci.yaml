@@ -13,6 +13,9 @@ concurrency:
 jobs:
   spell-check:
     name: Spell Check
+    permissions:
+      contents: read
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
