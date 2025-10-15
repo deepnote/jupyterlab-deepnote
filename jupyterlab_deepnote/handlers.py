@@ -13,11 +13,41 @@ class RouteHandler(APIHandler):
     # Jupyter server
     @tornado.web.authenticated
     async def get(self):
-        path = self.get_query_argument("path")
-        # Use Jupyter Server’s contents_manager, not direct filesystem access.
-        model = await ensure_async(
-            self.contents_manager.get(path, type="file", format="text", content=True)
-        )
+        path = self.get_query_argument("path", default=None)
+        if not path:
+            self.set_status(400)
+            self.set_header("Content-Type", "application/json")
+            self.finish(
+                json.dumps(
+                    {
+                        "code": 400,
+                        "message": "Missing required 'path' parameter",
+                    }
+                )
+            )
+            return
+        try:
+            model = await ensure_async(
+                self.contents_manager.get(
+                    path, type="file", format="text", content=True
+                )
+            )
+        except FileNotFoundError as e:
+            self.set_status(404)
+            self.set_header("Content-Type", "application/json")
+            self.finish(json.dumps({"code": 404, "message": "File not found"}))
+            return
+        except PermissionError as e:
+            self.set_status(403)
+            self.set_header("Content-Type", "application/json")
+            self.finish(json.dumps({"code": 403, "message": "Permission denied"}))
+            return
+        except Exception as e:
+            self.log.exception("Error retrieving file")
+            self.set_status(500)
+            self.set_header("Content-Type", "application/json")
+            self.finish(json.dumps({"code": 500, "message": "Internal server error"}))
+            return
         # Convert datetimes to strings so JSON can handle them
         for key in ("created", "last_modified"):
             if isinstance(model.get(key), datetime):
