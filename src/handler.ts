@@ -9,10 +9,10 @@ import { ServerConnection } from '@jupyterlab/services';
  * @param init Initial values for the request
  * @returns The response body interpreted as JSON
  */
-export async function requestAPI<T>(
+export async function requestAPI(
   endPoint = '',
   init: RequestInit = {}
-): Promise<T> {
+): Promise<unknown> {
   // Make request to Jupyter API
   const settings = ServerConnection.makeSettings();
   const requestUrl = URLExt.join(

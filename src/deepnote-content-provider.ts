@@ -1,8 +1,21 @@
 import { Contents, RestContentProvider } from '@jupyterlab/services';
 import { transformDeepnoteYamlToNotebookContent } from './transform-deepnote-yaml-to-notebook-content';
 import { requestAPI } from './handler';
+import { z } from 'zod';
 
 export const deepnoteContentProviderName = 'deepnote-content-provider';
+
+const deepnoteFileResponseSchema = z.object({
+  deepnoteFileModel: z.object({
+    name: z.string(),
+    path: z.string(),
+    created: z.string(),
+    last_modified: z.string(),
+    content: z.string(),
+    mimetype: z.string().optional()
+  })
+});
+
 export class DeepnoteContentProvider extends RestContentProvider {
   async get(
     localPath: string,
@@ -17,24 +30,13 @@ export class DeepnoteContentProvider extends RestContentProvider {
     }
 
     // Call custom API route to fetch the Deepnote file content
-    let data: any;
-
-    try {
-      data = await requestAPI<any>(
-        `file?path=${encodeURIComponent(localPath)}`
-      );
-    } catch (error) {
-      console.error(`Failed to fetch Deepnote file: ${localPath}`, error);
-      throw new Error(`Failed to fetch .deepnote file: ${error}`);
+    const data = await requestAPI(`file?path=${encodeURIComponent(localPath)}`);
+    const parsed = deepnoteFileResponseSchema.safeParse(data);
+    if (!parsed.success) {
+      console.error('Invalid API response shape', parsed.error);
+      throw new Error('Invalid API response shape');
     }
-
-    if (!data.deepnoteFileModel) {
-      throw new Error(
-        `Invalid API response: missing deepnoteFileModel for ${localPath}`
-      );
-    }
-
-    const modelData = data.deepnoteFileModel;
+    const modelData = parsed.data.deepnoteFileModel;
 
     // Transform the Deepnote YAML to Jupyter notebook content
     const notebookContent = await transformDeepnoteYamlToNotebookContent(
