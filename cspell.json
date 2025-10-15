@@ -1,0 +1,67 @@
+{
+  "version": "0.2",
+  "ignorePaths": [
+    "node_modules",
+    "package-lock.json",
+    "yarn.lock",
+    "dist",
+    "lib",
+    "build",
+    "coverage",
+    ".vscode",
+    ".git",
+    "*.min.js",
+    "*.min.css",
+    "*.map",
+    "jupyterlab_deepnote/labextension"
+  ],
+  "language": "en",
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "words": [
+        "deepnote",
+        "jupyter",
+        "jupyterlab",
+        "ipynb",
+        "labextension",
+        "jlpm",
+        "pnpm",
+        "monorepo"
+      ]
+    }
+  ],
+  "words": [
+    "apputils",
+    "bdist",
+    "chakra",
+    "codegen",
+    "coreutils",
+    "csstree",
+    "deepnote",
+    "ipynb",
+    "Jakubowski",
+    "jlpm",
+    "jpserver",
+    "jupyter",
+    "jupyterlab",
+    "labextension",
+    "labextensions",
+    "lintcache",
+    "lumino",
+    "monorepo",
+    "nbformat",
+    "pnpm",
+    "pyproject",
+    "Pytest",
+    "pytest",
+    "rseidelsohn",
+    "sdist",
+    "settingregistry",
+    "stylelintcache",
+    "testutils",
+    "venv",
+    "ydoc"
+  ],
+  "useGitignore": true
+}
