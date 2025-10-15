@@ -32,17 +32,17 @@ class RouteHandler(APIHandler):
                     path, type="file", format="text", content=True
                 )
             )
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             self.set_status(404)
             self.set_header("Content-Type", "application/json")
             self.finish(json.dumps({"code": 404, "message": "File not found"}))
             return
-        except PermissionError as e:
+        except PermissionError:
             self.set_status(403)
             self.set_header("Content-Type", "application/json")
             self.finish(json.dumps({"code": 403, "message": "Permission denied"}))
             return
-        except Exception as e:
+        except Exception:
             self.log.exception("Error retrieving file")
             self.set_status(500)
             self.set_header("Content-Type", "application/json")
