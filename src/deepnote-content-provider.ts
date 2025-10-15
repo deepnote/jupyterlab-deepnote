@@ -21,7 +21,7 @@ export class DeepnoteContentProvider extends RestContentProvider {
     localPath: string,
     options?: Contents.IFetchOptions
   ): Promise<Contents.IModel> {
-    const isDeepnoteFile = localPath.endsWith('.deepnote');
+    const isDeepnoteFile = localPath.toLowerCase().endsWith('.deepnote');
 
     if (!isDeepnoteFile) {
       // Not a .deepnote file, return as-is
