@@ -1,18 +1,19 @@
 import { Contents, RestContentProvider } from '@jupyterlab/services';
-import { z } from 'zod';
 import { transformDeepnoteYamlToNotebookContent } from './transform-deepnote-yaml-to-notebook-content';
+import { requestAPI } from './handler';
+import { z } from 'zod';
 
 export const deepnoteContentProviderName = 'deepnote-content-provider';
 
-const deepnoteFileFromServerSchema = z.object({
-  cells: z.array(z.any()), // or refine further with nbformat
-  metadata: z.object({
-    deepnote: z.object({
-      rawYamlString: z.string()
-    })
-  }),
-  nbformat: z.number(),
-  nbformat_minor: z.number()
+const deepnoteFileResponseSchema = z.object({
+  deepnoteFileModel: z.object({
+    name: z.string(),
+    path: z.string(),
+    created: z.string(),
+    last_modified: z.string(),
+    content: z.string(),
+    mimetype: z.string().optional()
+  })
 });
 
 export class DeepnoteContentProvider extends RestContentProvider {
@@ -20,40 +21,40 @@ export class DeepnoteContentProvider extends RestContentProvider {
     localPath: string,
     options?: Contents.IFetchOptions
   ): Promise<Contents.IModel> {
-    const model = await super.get(localPath, options);
-    const isDeepnoteFile =
-      localPath.endsWith('.deepnote') && model.type === 'notebook';
+    const isDeepnoteFile = localPath.toLowerCase().endsWith('.deepnote');
 
     if (!isDeepnoteFile) {
       // Not a .deepnote file, return as-is
-      return model;
+      const nonDeepnoteModel = await super.get(localPath, options);
+      return nonDeepnoteModel;
     }
 
-    const validatedModelContent = deepnoteFileFromServerSchema.safeParse(
-      model.content
-    );
-
-    if (!validatedModelContent.success) {
-      console.error(
-        'Invalid .deepnote file content:',
-        validatedModelContent.error
-      );
-      // Return an empty notebook instead of throwing an error
-      model.content.cells = [];
-      return model;
+    // Call custom API route to fetch the Deepnote file content
+    const data = await requestAPI(`file?path=${encodeURIComponent(localPath)}`);
+    const parsed = deepnoteFileResponseSchema.safeParse(data);
+    if (!parsed.success) {
+      console.error('Invalid API response shape', parsed.error);
+      throw new Error('Invalid API response shape');
     }
+    const modelData = parsed.data.deepnoteFileModel;
 
     // Transform the Deepnote YAML to Jupyter notebook content
-    const transformedModelContent =
-      await transformDeepnoteYamlToNotebookContent(
-        validatedModelContent.data.metadata.deepnote.rawYamlString
-      );
+    const notebookContent = await transformDeepnoteYamlToNotebookContent(
+      modelData.content
+    );
 
-    const transformedModel = {
-      ...model,
-      content: transformedModelContent
+    const model: Contents.IModel = {
+      name: modelData.name,
+      path: modelData.path,
+      type: 'notebook',
+      writable: false,
+      created: modelData.created,
+      last_modified: modelData.last_modified,
+      mimetype: 'application/x-ipynb+json',
+      format: 'json',
+      content: notebookContent
     };
 
-    return transformedModel;
+    return model;
   }
 }

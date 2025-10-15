@@ -1,5 +1,0 @@
-{
-  "ServerApp": {
-    "contents_manager_class": "jupyterlab_deepnote.contents.DeepnoteContentsManager"
-  }
-}
