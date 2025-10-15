@@ -17,7 +17,23 @@ export class DeepnoteContentProvider extends RestContentProvider {
     }
 
     // Call custom API route to fetch the Deepnote file content
-    const data = await requestAPI<any>(`file?path=${localPath}`);
+    let data: any;
+
+    try {
+      data = await requestAPI<any>(
+        `file?path=${encodeURIComponent(localPath)}`
+      );
+    } catch (error) {
+      console.error(`Failed to fetch Deepnote file: ${localPath}`, error);
+      throw new Error(`Failed to fetch .deepnote file: ${error}`);
+    }
+
+    if (!data.deepnoteFileModel) {
+      throw new Error(
+        `Invalid API response: missing deepnoteFileModel for ${localPath}`
+      );
+    }
+
     const modelData = data.deepnoteFileModel;
 
     // Transform the Deepnote YAML to Jupyter notebook content
