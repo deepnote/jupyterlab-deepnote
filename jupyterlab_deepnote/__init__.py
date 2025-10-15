@@ -8,7 +8,6 @@ except ImportError:
 
     warnings.warn("Importing 'jupyterlab_deepnote' outside a proper installation.")
     __version__ = "dev"
-from jupyterlab_deepnote.contents import DeepnoteContentsManager
 from .handlers import setup_handlers
 
 
