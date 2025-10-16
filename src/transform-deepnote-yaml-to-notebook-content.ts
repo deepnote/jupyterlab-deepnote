@@ -2,6 +2,7 @@ import { IDeepnoteNotebookContent, IDeepnoteNotebookMetadata } from './types';
 import { blankCodeCell, blankDeepnoteNotebookContent } from './fallback-data';
 import { deserializeDeepnoteFile } from '@deepnote/blocks';
 import { convertDeepnoteBlockToJupyterCell } from './convert-deepnote-block-to-jupyter-cell';
+import { kernelMetadataFallback } from './kernel-metadata-fallback';
 
 export async function transformDeepnoteYamlToNotebookContent(
   yamlString: string
@@ -42,6 +43,7 @@ export async function transformDeepnoteYamlToNotebookContent(
     return {
       cells,
       metadata: {
+        ...kernelMetadataFallback,
         deepnote: {
           notebooks
         }
