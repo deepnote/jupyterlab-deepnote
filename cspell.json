@@ -61,7 +61,12 @@
     "stylelintcache",
     "testutils",
     "venv",
-    "ydoc"
+    "ydoc",
+    "kernelspec",
+    "ipykernel",
+    "ipython",
+    "nbconvert",
+    "pygments"
   ],
   "useGitignore": true
 }
