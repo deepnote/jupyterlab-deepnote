@@ -77,7 +77,7 @@ describe('NotebookPicker', () => {
 
   it('should not call fromJSON if selected notebook is invalid', async () => {
     const getMetadata = panel.context.model.getMetadata as jest.Mock;
-    getMetadata.mockReturnValue({ notebooks: {} });
+    getMetadata.mockReturnValue({ notebooks: {}, notebook_names: [] });
 
     const select = document.querySelector('select') as HTMLSelectElement;
     simulate(select, 'change', { target: { value: 'nonexistent' } });
