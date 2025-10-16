@@ -1,3 +1,7 @@
+# Scope
+
+This document is intended for contributors and maintainers working on the extension's source code. For general usage and installation instructions, please refer to the README.
+
 # Contributing to `jupyterlab-deepnote`
 
 ## Development install
@@ -138,6 +142,39 @@ jlpm
 jlpm test
 ```
 
-## Packaging the extension
+## Versioning and compatibility
 
-See [RELEASE](RELEASE.md)
+We follow [Semantic Versioning (semver)](https://semver.org/).
+
+The extension pins JupyterLab to the current major version in both Python and JavaScript dependencies to ensure compatibility.
+
+**Example `pyproject.toml` dependency:**
+
+```toml
+[project.optional-dependencies]
+jupyterlab = ["jupyterlab>=4.0.0,<5.0.0"]
+```
+
+**Example `package.json` peerDependencies:**
+
+```json
+  "peerDependencies": {
+    "@jupyterlab/application": "^4.0.0",
+    "@jupyterlab/apputils": "^4.0.0",
+    "jupyterlab": "^4.0.0"
+  }
+```
+
+## Sync with the JupyterLab extension template
+
+This project was bootstrapped using the [JupyterLab extension template](https://github.com/jupyterlab/extension-template). To keep your project up to date with improvements and best practices from the template, run:
+
+```sh
+copier update --trust
+```
+
+This will apply the latest template changes interactively. Review and commit any updates as appropriate.
+
+## Release workflow
+
+See [RELEASE](RELEASE.md) for details on the release process. We recommend using [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser) and [PyPI trusted publishing](https://docs.pypi.org/trusted-publishers/) for secure and automated releases.
