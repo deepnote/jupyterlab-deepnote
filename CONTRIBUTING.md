@@ -32,7 +32,7 @@ Install `jupyterlab`. The extension package itself doesn’t depend on `jupyterl
 uv pip install jupyterlab
 ```
 
-**Configure Access to @deepnote/blocks Package**
+### Configure Access to @deepnote/blocks Package
 
 The `@deepnote/blocks` package is published on GitHub Packages. To install it, you'll need to authenticate with GitHub:
 
