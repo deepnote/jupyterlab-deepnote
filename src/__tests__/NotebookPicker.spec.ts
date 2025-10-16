@@ -52,12 +52,12 @@ describe('NotebookPicker', () => {
   });
 
   it('should render a select element', async () => {
-  await framePromise(); // wait for rendering
-  const select = document.querySelector('select') as HTMLSelectElement;
-  expect(select).not.toBeNull();
-  expect(select.options.length).toBe(2);
-  expect(select.options[0] && select.options[0].value).toBe('nb1');
-});
+    await framePromise(); // wait for rendering
+    const select = document.querySelector('select') as HTMLSelectElement;
+    expect(select).not.toBeNull();
+    expect(select.options.length).toBe(2);
+    expect(select.options[0] && select.options[0].value).toBe('nb1');
+  });
 
   it('should call fromJSON when selecting a notebook', async () => {
     const select = document.querySelector('select') as HTMLSelectElement;

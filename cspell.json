@@ -39,6 +39,7 @@
     "coreutils",
     "csstree",
     "deepnote",
+    "exenv",
     "ipynb",
     "Jakubowski",
     "jlpm",
