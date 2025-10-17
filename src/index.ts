@@ -1,20 +1,10 @@
-import {
-  JupyterFrontEnd,
-  JupyterFrontEndPlugin
-} from '@jupyterlab/application';
-import { IToolbarWidgetRegistry } from '@jupyterlab/apputils';
-import {
-  INotebookWidgetFactory,
-  NotebookPanel,
-  NotebookWidgetFactory
-} from '@jupyterlab/notebook';
-import { Widget } from '@lumino/widgets';
-import { ContentsManager } from '@jupyterlab/services';
-import {
-  DeepnoteContentProvider,
-  deepnoteContentProviderName
-} from './deepnote-content-provider';
-import { NotebookPicker } from './components/NotebookPicker';
+import type { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application'
+import { IToolbarWidgetRegistry } from '@jupyterlab/apputils'
+import { INotebookWidgetFactory, type NotebookPanel, type NotebookWidgetFactory } from '@jupyterlab/notebook'
+import type { ContentsManager } from '@jupyterlab/services'
+import { Widget } from '@lumino/widgets'
+import { NotebookPicker } from './components/NotebookPicker'
+import { DeepnoteContentProvider, deepnoteContentProviderName } from './deepnote-content-provider'
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-deepnote:plugin',
@@ -27,22 +17,18 @@ const plugin: JupyterFrontEndPlugin<void> = {
     toolbarRegistry: IToolbarWidgetRegistry
   ) => {
     // Register a custom contents provider for the default notebook widget factory.
-    const drive = (app.serviceManager.contents as ContentsManager).defaultDrive;
-    const registry = drive?.contentProviderRegistry;
+    const drive = (app.serviceManager.contents as ContentsManager).defaultDrive
+    const registry = drive?.contentProviderRegistry
     if (!registry) {
-      // If content provider is a non-essential feature and support for JupyterLab <4.4 is desired:
-      console.error(
-        'Cannot initialize content provider: no content provider registry.'
-      );
-      return;
+      return
     }
     const deepnoteContentProvider = new DeepnoteContentProvider({
       // These options are only required if extending the `RestContentProvider`.
       apiEndpoint: '/api/contents',
-      serverSettings: app.serviceManager.serverSettings
-    });
-    registry.register(deepnoteContentProviderName, deepnoteContentProvider);
-    notebookWidgetFactory.contentProviderId = deepnoteContentProviderName;
+      serverSettings: app.serviceManager.serverSettings,
+    })
+    registry.register(deepnoteContentProviderName, deepnoteContentProvider)
+    notebookWidgetFactory.contentProviderId = deepnoteContentProviderName
 
     // Register .deepnote file type and set the notebook widget factory as the default.
     app.docRegistry.addFileType(
@@ -52,28 +38,21 @@ const plugin: JupyterFrontEndPlugin<void> = {
         extensions: ['.deepnote'],
         mimeTypes: ['text/yaml', 'application/x-yaml'],
         fileFormat: 'text',
-        contentType: 'file'
+        contentType: 'file',
       },
       [notebookWidgetFactory.name]
-    );
-    app.docRegistry.setDefaultWidgetFactory(
-      'deepnote',
-      notebookWidgetFactory.name
-    );
+    )
+    app.docRegistry.setDefaultWidgetFactory('deepnote', notebookWidgetFactory.name)
 
     // Add a toolbar item to switch between notebooks in a .deepnote file.
-    toolbarRegistry.addFactory<NotebookPanel>(
-      notebookWidgetFactory.name,
-      'deepnote:switch-notebook',
-      panel => {
-        if (!panel.context.path.endsWith('.deepnote')) {
-          return new Widget(); // don’t render for .ipynb or others
-        }
-
-        return new NotebookPicker(panel);
+    toolbarRegistry.addFactory<NotebookPanel>(notebookWidgetFactory.name, 'deepnote:switch-notebook', panel => {
+      if (!panel.context.path.endsWith('.deepnote')) {
+        return new Widget() // don’t render for .ipynb or others
       }
-    );
-  }
-};
 
-export default plugin;
+      return new NotebookPicker(panel)
+    })
+  },
+}
+
+export default plugin

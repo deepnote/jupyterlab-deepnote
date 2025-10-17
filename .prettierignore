@@ -4,3 +4,9 @@ node_modules
 **/package.json
 !/package.json
 jupyterlab_deepnote
+.venv
+coverage
+**/*.ts
+**/*.tsx
+**/*.js
+**/*.jsx

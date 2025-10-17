@@ -70,6 +70,7 @@
         "zod": "^4.1.11"
     },
     "devDependencies": {
+        "@biomejs/biome": "2.2.5",
         "@jupyterlab/builder": "^4.0.0",
         "@jupyterlab/testutils": "^4.0.0",
         "@types/jest": "^29.2.0",
