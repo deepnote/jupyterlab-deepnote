@@ -3,7 +3,7 @@ import type { NotebookPanel } from '@jupyterlab/notebook'
 import { HTMLSelect } from '@jupyterlab/ui-components'
 import { type Message, MessageLoop } from '@lumino/messaging'
 import { Widget } from '@lumino/widgets'
-import type React from 'react'
+import React from 'react'
 import { deepnoteMetadataSchema } from '../types'
 
 export class NotebookPicker extends ReactWidget {
