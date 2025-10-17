@@ -7,7 +7,7 @@ Read‑only viewer for Deepnote `.deepnote` files inside JupyterLab.
 
 ## Requirements
 
-- Python 3.7 or higher
+- Python 3.9 or higher
 - JupyterLab 4.0.0 or higher
 
 ## Install
