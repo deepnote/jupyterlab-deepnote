@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
 
       - name: Install qlty
-        uses: qltysh/qlty-action/install@06730ef41b86b073c3813c0fc07a0c734980ce5d
+        uses: qltysh/qlty-action/install@a19242102d17e497f437d7466aa01b528537e899
 
       - name: Run qlty check
         run: qlty check
@@ -34,16 +34,40 @@ jobs:
       - name: Run qlty code smells analysis
         run: qlty smells
 
+  lint-and-format:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+
+      - name: Base Setup
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
+
+      - name: Install dependencies
+        run: python -m pip install -U "jupyterlab>=4.0.0,<5"
+
+      - name: Install node dependencies
+        run: jlpm
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run lint and format checks
+        run: jlpm run lint:check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   audit-prod:
     name: Audit - Production
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
 
       - name: Install dependencies
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
@@ -64,10 +88,10 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
 
       - name: Install dependencies
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
@@ -87,9 +111,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
 
       - name: Check licenses
         run: yarn check-licenses

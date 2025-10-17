@@ -121,7 +121,7 @@
   },
   "overrides": [
     {
-      "include": ["*.tsx"],
+      "includes": ["*.tsx"],
       "linter": {
         "rules": {
           "style": {

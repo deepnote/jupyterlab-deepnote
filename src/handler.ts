@@ -9,7 +9,7 @@ import { ServerConnection } from '@jupyterlab/services'
  * @param init Initial values for the request
  * @returns The response body interpreted as JSON
  */
-export async function requestAPI<T>(endPoint = '', init: RequestInit = {}): Promise<T> {
+export async function requestAPI(endPoint = '', init: RequestInit = {}): Promise<unknown> {
   // Make request to Jupyter API
   const settings = ServerConnection.makeSettings()
   const requestUrl = URLExt.join(
@@ -36,7 +36,7 @@ export async function requestAPI<T>(endPoint = '', init: RequestInit = {}): Prom
           typeof parsed === 'object' && parsed !== null && 'message' in parsed ? parsed.message : parsed
         )
       }
-      return parsed as T
+      return parsed
       // eslint-disable-next-line no-empty
     } catch (_error) {}
   }
@@ -45,5 +45,5 @@ export async function requestAPI<T>(endPoint = '', init: RequestInit = {}): Prom
     throw new ServerConnection.ResponseError(response, data)
   }
 
-  return data as T
+  return data
 }

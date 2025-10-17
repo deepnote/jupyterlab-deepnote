@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -69,7 +69,7 @@ jobs:
           fi
 
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
 
       - name: Install dependencies
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
@@ -80,7 +80,7 @@ jobs:
           jlpm
           python -m pip install .
 
-      - uses: jupyterlab/maintainer-tools/.github/actions/update-snapshots@v1
+      - uses: jupyterlab/maintainer-tools/.github/actions/update-snapshots@affc83be6020d529b9368cd4d63e467877606600 # v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Playwright knows how to start JupyterLab server

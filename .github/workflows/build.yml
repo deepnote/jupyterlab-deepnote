@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
 
       - name: Install dependencies
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.xml,coverage/lcov.info
@@ -64,7 +64,7 @@ jobs:
 
       - name: Upload test results to Codecov
         if: '!cancelled()'
-        uses: codecov/test-results-action@v1
+        uses: codecov/test-results-action@47f89e9acb64b76debcd5ea40642d25a4adced9f # v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/pytest-results.xml,coverage/junit.xml
@@ -81,7 +81,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload extension packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: extension-artifacts
           path: dist/jupyterlab_deepnote*
@@ -93,11 +93,11 @@ jobs:
 
     steps:
       - name: Install Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6
         with:
           python-version: '3.9'
           architecture: 'x64'
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
         with:
           name: extension-artifacts
       - name: Install and Test
@@ -182,8 +182,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
-      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
+      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@affc83be6020d529b9368cd4d63e467877606600 # v1
         with:
-          ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/'
+          ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/ https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg https://www.youtube.com/watch?v=jF0yA-JLQW0'

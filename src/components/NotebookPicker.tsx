@@ -1,7 +1,9 @@
 import { ReactWidget } from '@jupyterlab/apputils'
 import type { NotebookPanel } from '@jupyterlab/notebook'
 import { HTMLSelect } from '@jupyterlab/ui-components'
-import React from 'react'
+import { type Message, MessageLoop } from '@lumino/messaging'
+import { Widget } from '@lumino/widgets'
+import type React from 'react'
 import { deepnoteMetadataSchema } from '../types'
 
 export class NotebookPicker extends ReactWidget {
@@ -54,6 +56,15 @@ export class NotebookPicker extends ReactWidget {
     this.update()
   }
 
+  protected onAfterAttach(msg: Message): void {
+    super.onAfterAttach(msg)
+    requestAnimationFrame(() => {
+      if (this.parent) {
+        MessageLoop.sendMessage(this.parent, Widget.ResizeMessage.UnknownSize)
+      }
+    })
+  }
+
   render(): JSX.Element {
     const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote')
 
@@ -71,7 +82,7 @@ export class NotebookPicker extends ReactWidget {
         aria-label='Select active notebook'
         title='Select active notebook'
         style={{
-          maxWidth: '120px',
+          width: '120px',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
           overflow: 'hidden',

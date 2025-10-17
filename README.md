@@ -1,5 +1,8 @@
 # jupyterlab_deepnote
 
+[![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/deepnote/jupyterlab-deepnote/graph/badge.svg?token=OV32VZNOJ2)](https://codecov.io/gh/deepnote/jupyterlab-deepnote)
+
 A Deepnote extension for JupyterLab
 
 This extension is composed of a Python package named `jupyterlab_deepnote`
@@ -114,12 +117,12 @@ jlpm run watch
 
 The `jlpm` command is JupyterLab's pinned version of
 [yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
-`yarn` or `npm` in lieu of `jlpm` below.
+`yarn` or `npm` instead of `jlpm` below.
 
-In a separate terminal, run `jupyter lab` with the `--config` option to register our custom file contents manager for the `.deepnote` extension. The `--debug` option lets you see HTTP requests in the logs, which is helpful for debugging.
+In a separate terminal, run `jupyter lab`. You can add the `--debug` option to see HTTP requests in the logs, which can be helpful for debugging.
 
 ```shell
-jupyter lab --debug --config="$(pwd)/jupyter-config/server-config/jupyter_server_config.json"
+jupyter lab --debug
 ```
 
 You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
