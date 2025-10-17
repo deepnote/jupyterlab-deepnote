@@ -26,10 +26,6 @@ After installation you can:
 - Switch between notebooks inside a `.deepnote` file
 - View content in **read‑only** mode (no editing or saving back to the `.deepnote` file)
 
-## Compatibility and Maintenance
-
-This extension is maintained to be compatible with JupyterLab versions 4.x. It is recommended to keep your JupyterLab installation updated within this major version to ensure full compatibility.
-
 ## Troubleshooting
 
 If you encounter issues with the extension, verify that both the server and frontend extensions are properly installed and enabled.
