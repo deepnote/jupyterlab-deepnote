@@ -67,9 +67,3 @@ Here is a summary of the steps to cut a new release:
 > [!NOTE]
 > Check out the [workflow documentation](https://jupyter-releaser.readthedocs.io/en/latest/get_started/making_release_from_repo.html)
 > for more information.
-
-## Publishing to `conda-forge`
-
-If the package is not on conda forge yet, check the documentation to learn how to add it: https://conda-forge.org/docs/maintainer/adding_pkgs.html
-
-Otherwise a bot should pick up the new version publish to PyPI, and open a new PR on the feedstock repository automatically.
