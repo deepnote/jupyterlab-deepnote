@@ -51,6 +51,12 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       expect(result.source).toBe('print("hello")');
       expect(result.execution_count).toBeNull();
       expect(result.outputs).toEqual([]);
+
+      const { createPythonCode } = jest.requireMock('@deepnote/blocks');
+      expect(createPythonCode).toHaveBeenCalledTimes(1);
+      expect(createPythonCode).toHaveBeenCalledWith(
+        expect.objectContaining({ id: 'block-1' })
+      );
     });
 
     it('should include execution count if present', () => {
@@ -194,6 +200,12 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       expect(result.cell_type).toBe('markdown');
       expect(result.metadata).toEqual({});
       expect(result.source).toBe('# Hello');
+
+      const { createMarkdown } = jest.requireMock('@deepnote/blocks');
+      expect(createMarkdown).toHaveBeenCalledTimes(1);
+      expect(createMarkdown).toHaveBeenCalledWith(
+        expect.objectContaining({ id: 'block-7' })
+      );
     });
 
     it('should convert text-cell-h1 to markdown cell', () => {

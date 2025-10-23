@@ -151,6 +151,24 @@ describe('transformDeepnoteYamlToNotebookContent', () => {
     expect(result.cells).toHaveLength(1);
     const cells = result.cells as any[];
     expect(cells[0].source).toBe('first_notebook_code');
+
+    const { convertDeepnoteBlockToJupyterCell } = jest.requireMock(
+      '../convert-deepnote-block-to-jupyter-cell'
+    );
+    expect(convertDeepnoteBlockToJupyterCell).toHaveBeenCalledTimes(3);
+    const calls = convertDeepnoteBlockToJupyterCell.mock.calls;
+    expect(calls[0][0]).toMatchObject({
+      id: 'block-1',
+      source: 'first_notebook_code'
+    });
+    expect(calls[1][0]).toMatchObject({
+      id: 'block-2',
+      source: 'second_notebook_code'
+    });
+    expect(calls[2][0]).toMatchObject({
+      id: 'block-1',
+      source: 'first_notebook_code'
+    });
   });
 
   it('should handle empty notebooks gracefully', async () => {
