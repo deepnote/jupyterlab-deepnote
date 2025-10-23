@@ -12,18 +12,23 @@ export class NotebookPicker extends ReactWidget {
   constructor(private panel: NotebookPanel) {
     super();
 
-    void panel.context.ready.then(() => {
-      const deepnoteMetadata = this.panel.context.model.getMetadata('deepnote');
-      const metadataNames = deepnoteMetadata?.notebook_names;
-      const names =
-        Array.isArray(metadataNames) &&
-        metadataNames.every(n => typeof n === 'string')
-          ? metadataNames
-          : [];
+    panel.context.ready
+      .then(() => {
+        const deepnoteMetadata =
+          this.panel.context.model.getMetadata('deepnote');
+        const metadataNames = deepnoteMetadata?.notebook_names;
+        const names =
+          Array.isArray(metadataNames) &&
+          metadataNames.every(n => typeof n === 'string')
+            ? metadataNames
+            : [];
 
-      this.selected = names.length === 0 ? null : (names[0] ?? null);
-      this.update();
-    });
+        this.selected = names.length === 0 ? null : (names[0] ?? null);
+        this.update();
+      })
+      .catch(error => {
+        console.error('Failed to initialize NotebookPicker:', error);
+      });
   }
 
   private handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -68,7 +73,9 @@ export class NotebookPicker extends ReactWidget {
   protected onAfterAttach(msg: Message): void {
     super.onAfterAttach(msg);
     requestAnimationFrame(() => {
-      MessageLoop.sendMessage(this.parent!, Widget.ResizeMessage.UnknownSize);
+      if (this.parent) {
+        MessageLoop.sendMessage(this.parent, Widget.ResizeMessage.UnknownSize);
+      }
     });
   }
 

@@ -25,9 +25,11 @@ export async function requestAPI(
   try {
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
   } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     throw new ServerConnection.NetworkError(error as any);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let data: any = await response.text();
 
   if (data.length > 0) {
@@ -39,7 +41,7 @@ export async function requestAPI(
   }
 
   if (!response.ok) {
-    throw new ServerConnection.ResponseError(response, data.message || data);
+    throw new ServerConnection.ResponseError(response, data.message ?? data);
   }
 
   return data;
