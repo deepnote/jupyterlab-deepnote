@@ -1,6 +1,6 @@
 # Making a new release of jupyterlab_deepnote
 
-The extension can be published to `PyPI` and `npm` manually or using the [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser).
+This extension requires both a frontend and backend component to function properly. Therefore, we only publish the Python package to `PyPI`. The NPM package alone would not do anything and is not published separately.
 
 ## Manual release
 
@@ -49,12 +49,7 @@ twine upload dist/*
 
 ### NPM package
 
-To publish the frontend part of the extension as a NPM package, do:
-
-```bash
-npm login
-npm publish --access public
-```
+The frontend part of this extension is not published separately as an NPM package because it requires the backend component to function. Publishing only the NPM package would not provide a working extension.
 
 ## Automated releases with the Jupyter Releaser
 
@@ -72,9 +67,3 @@ Here is a summary of the steps to cut a new release:
 > [!NOTE]
 > Check out the [workflow documentation](https://jupyter-releaser.readthedocs.io/en/latest/get_started/making_release_from_repo.html)
 > for more information.
-
-## Publishing to `conda-forge`
-
-If the package is not on conda forge yet, check the documentation to learn how to add it: https://conda-forge.org/docs/maintainer/adding_pkgs.html
-
-Otherwise a bot should pick up the new version publish to PyPI, and open a new PR on the feedstock repository automatically.
