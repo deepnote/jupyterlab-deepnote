@@ -108,4 +108,35 @@ describe('NotebookPicker', () => {
     expect(select.options.length).toBeGreaterThanOrEqual(1);
     expect(select.options[0] && select.options[0].value).toBe('-');
   });
+
+  it('should handle context.ready rejection gracefully', async () => {
+    const consoleErrorSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+    const errorPanel = {
+      context: {
+        ready: Promise.reject(new Error('Failed to initialize')),
+        model: {
+          getMetadata: jest.fn()
+        }
+      },
+      model
+    } as any;
+
+    document.body.innerHTML = '';
+    const widget = new NotebookPicker(errorPanel);
+    // Override onAfterAttach to avoid errors from this.parent being null
+    (widget as any).onAfterAttach = jest.fn();
+    Widget.attach(widget, document.body);
+    await framePromise();
+
+    await new Promise(resolve => setTimeout(resolve, 10));
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'Failed to initialize NotebookPicker:',
+      expect.any(Error)
+    );
+
+    consoleErrorSpy.mockRestore();
+  });
 });
