@@ -6,6 +6,7 @@ import { framePromise } from '@jupyterlab/testing';
 import { NotebookPanel } from '@jupyterlab/notebook';
 import { INotebookModel } from '@jupyterlab/notebook';
 import { Widget } from '@lumino/widgets';
+import { Message } from '@lumino/messaging';
 import { simulate } from 'simulate-event';
 
 describe('NotebookPicker', () => {
@@ -125,7 +126,6 @@ describe('NotebookPicker', () => {
 
     document.body.innerHTML = '';
     const widget = new NotebookPicker(errorPanel);
-    // Override onAfterAttach to avoid errors from this.parent being null
     (widget as any).onAfterAttach = jest.fn();
     Widget.attach(widget, document.body);
     await framePromise();
@@ -138,5 +138,63 @@ describe('NotebookPicker', () => {
     );
 
     consoleErrorSpy.mockRestore();
+  });
+
+  it('should handle null model in handleChange', async () => {
+    const nullModelPanel = {
+      context: {
+        ready: Promise.resolve(),
+        model: {
+          getMetadata: jest.fn().mockReturnValue({
+            notebooks: {
+              nb1: { id: 'nb1', name: 'nb1', cells: [] }
+            },
+            notebook_names: ['nb1']
+          })
+        }
+      },
+      model: null
+    } as any;
+
+    document.body.innerHTML = '';
+    const widget = new NotebookPicker(nullModelPanel);
+    (widget as any).onAfterAttach = jest.fn();
+    Widget.attach(widget, document.body);
+    await framePromise();
+
+    const select = document.querySelector('select') as HTMLSelectElement;
+    simulate(select, 'change', { target: { value: 'nb1' } });
+    await framePromise();
+  });
+
+  it('should handle invalid metadata in handleChange', async () => {
+    const consoleErrorSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+    const getMetadata = panel.context.model.getMetadata as jest.Mock;
+    getMetadata.mockReturnValue({ invalid: 'metadata' });
+
+    const select = document.querySelector('select') as HTMLSelectElement;
+    simulate(select, 'change', { target: { value: 'nb1' } });
+    await framePromise();
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'Invalid deepnote metadata:',
+      expect.anything()
+    );
+    expect(model.fromJSON).not.toHaveBeenCalled();
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('should handle onAfterAttach without parent', async () => {
+    document.body.innerHTML = '';
+    const widget = new NotebookPicker(panel);
+    Widget.attach(widget, document.body);
+    await framePromise();
+
+    const onAfterAttachMethod = (widget as any).onAfterAttach.bind(widget);
+    onAfterAttachMethod({} as Message);
+    await new Promise(resolve => requestAnimationFrame(resolve));
   });
 });
