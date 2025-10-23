@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Base Setup
-        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
+        uses: jupyterlab/maintainer-tools/.github/actions/base-setup@d72f5cb72b472c1e59036840891e918c9bda4dae # v1
 
       - name: Install dependencies
         run: python -m pip install -U "jupyterlab>=4.0.0,<5"
@@ -183,7 +183,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@affc83be6020d529b9368cd4d63e467877606600 # v1
-      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@affc83be6020d529b9368cd4d63e467877606600 # v1
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@d72f5cb72b472c1e59036840891e918c9bda4dae # v1
+      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@d72f5cb72b472c1e59036840891e918c9bda4dae # v1
         with:
           ignore_links: 'https://github.com/deepnote/jupyterlab-deepnote/pull/ https://github.com/deepnote/jupyterlab-deepnote/issues/ https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg https://www.youtube.com/watch?v=jF0yA-JLQW0'
