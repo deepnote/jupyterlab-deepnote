@@ -18,9 +18,6 @@ describe('NotebookPicker', () => {
 
     mockNotebookModel = {
       fromJSON: jest.fn(),
-      cells: {
-        length: 0
-      } as never,
       dirty: false,
       getMetadata: jest.fn((key: string) => {
         if (key === 'deepnote') {
