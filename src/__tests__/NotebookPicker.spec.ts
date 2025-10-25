@@ -42,7 +42,7 @@ describe('NotebookPicker', () => {
     // Wait for widget to attach and render
     await framePromise();
     // Wait for constructor's async initialization to complete
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await Promise.resolve();
     await framePromise();
   };
 
