@@ -26,7 +26,7 @@ export async function requestAPI(
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
   } catch (error) {
     throw new ServerConnection.NetworkError(
-      error instanceof Error ? error : new Error(String(error))
+      error instanceof TypeError ? error : new TypeError(String(error))
     );
   }
 
