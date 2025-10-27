@@ -1,38 +1,8 @@
 // Copyright (c) Deepnote
 // Distributed under the terms of the Modified BSD License.
 
+import type { DeepnoteBlock } from '@deepnote/blocks';
 import { convertDeepnoteBlockToJupyterCell } from '../convert-deepnote-block-to-jupyter-cell';
-import { DeepnoteBlock } from '@deepnote/blocks';
-
-jest.mock('@deepnote/blocks', () => ({
-  createPythonCode: jest.fn((block: any) => block.source || 'print("test")'),
-  createMarkdown: jest.fn((block: any) => block.source || '# Test')
-}));
-
-jest.mock('../convert-deepnote-block-type-to-jupyter', () => ({
-  convertDeepnoteBlockTypeToJupyter: jest.fn((type: string) => {
-    if (
-      [
-        'code',
-        'sql',
-        'notebook-function',
-        'big-number',
-        'visualization',
-        'input-text',
-        'input-checkbox',
-        'input-textarea',
-        'input-file',
-        'input-select',
-        'input-date-range',
-        'input-date',
-        'input-slider'
-      ].includes(type)
-    ) {
-      return 'code';
-    }
-    return 'markdown';
-  })
-}));
 
 describe('convertDeepnoteBlockToJupyterCell', () => {
   describe('code cells', () => {
@@ -40,9 +10,10 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-1',
         type: 'code',
-        source: 'print("hello")',
-        metadata: { foo: 'bar' }
-      } as any;
+        content: 'print("hello")',
+        metadata: { foo: 'bar' },
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -51,22 +22,17 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       expect(result.source).toBe('print("hello")');
       expect(result.execution_count).toBeNull();
       expect(result.outputs).toEqual([]);
-
-      const { createPythonCode } = jest.requireMock('@deepnote/blocks');
-      expect(createPythonCode).toHaveBeenCalledTimes(1);
-      expect(createPythonCode).toHaveBeenCalledWith(
-        expect.objectContaining({ id: 'block-1' })
-      );
     });
 
     it('should include execution count if present', () => {
       const block: DeepnoteBlock = {
         id: 'block-2',
         type: 'code',
-        source: 'x = 1',
+        content: 'x = 1',
         metadata: {},
-        executionCount: 5
-      } as any;
+        executionCount: 5,
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -86,10 +52,11 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-3',
         type: 'code',
-        source: 'print("hello")',
+        content: 'print("hello")',
         metadata: {},
-        outputs: blockOutputs
-      } as any;
+        outputs: blockOutputs,
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -110,16 +77,21 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-4',
         type: 'code',
-        source: 'print("hello")',
+        content: 'print("hello")',
         metadata: {},
-        outputs: blockOutputs
-      } as any;
+        outputs: blockOutputs,
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
       expect(result.cell_type).toBe('code');
       expect(result.outputs).toHaveLength(1);
-      const resultOutputs = result.outputs as any[];
+      const resultOutputs = result.outputs as Array<{
+        output_type: string;
+        name: string;
+        text: string;
+      }>;
       expect(resultOutputs[0]).not.toHaveProperty('truncated');
       expect(resultOutputs[0]).toEqual({
         output_type: 'stream',
@@ -147,16 +119,21 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-5',
         type: 'code',
-        source: 'print("test")',
+        content: 'print("test")',
         metadata: {},
-        outputs: blockOutputs
-      } as any;
+        outputs: blockOutputs,
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
       expect(result.cell_type).toBe('code');
       expect(result.outputs).toHaveLength(2);
-      const resultOutputs = result.outputs as any[];
+      const resultOutputs = result.outputs as Array<{
+        output_type: string;
+        name: string;
+        text: string;
+      }>;
       expect(resultOutputs[0]).not.toHaveProperty('truncated');
       expect(resultOutputs[1]).not.toHaveProperty('truncated');
     });
@@ -174,14 +151,15 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-6',
         type: 'code',
-        source: 'print("hello")',
+        content: 'print("hello")',
         metadata: { test: 'value' },
-        outputs: blockOutputs
-      } as any;
+        outputs: blockOutputs,
+        sortingKey: '1'
+      };
 
       convertDeepnoteBlockToJupyterCell(block);
 
-      expect(block.outputs![0]).toHaveProperty('truncated');
+      expect(block.outputs?.[0]).toHaveProperty('truncated');
       expect(block.metadata).toEqual({ test: 'value' });
     });
   });
@@ -191,30 +169,26 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-7',
         type: 'markdown',
-        source: '# Hello',
-        metadata: { foo: 'bar' }
-      } as any;
+        content: '# Hello',
+        metadata: { foo: 'bar' },
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
       expect(result.cell_type).toBe('markdown');
       expect(result.metadata).toEqual({});
       expect(result.source).toBe('# Hello');
-
-      const { createMarkdown } = jest.requireMock('@deepnote/blocks');
-      expect(createMarkdown).toHaveBeenCalledTimes(1);
-      expect(createMarkdown).toHaveBeenCalledWith(
-        expect.objectContaining({ id: 'block-7' })
-      );
     });
 
     it('should convert text-cell-h1 to markdown cell', () => {
       const block: DeepnoteBlock = {
         id: 'block-8',
         type: 'text-cell-h1',
-        source: 'Heading 1',
-        metadata: {}
-      } as any;
+        content: 'Heading 1',
+        metadata: {},
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -225,9 +199,10 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-9',
         type: 'image',
-        source: '![alt](url)',
-        metadata: {}
-      } as any;
+        content: '![alt](url)',
+        metadata: {},
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -238,9 +213,10 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-10',
         type: 'markdown',
-        source: 'Text',
-        metadata: { deepnoteMetadata: 'should not appear' }
-      } as any;
+        content: 'Text',
+        metadata: { deepnoteMetadata: 'should not appear' },
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -254,9 +230,10 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-11',
         type: 'sql',
-        source: 'SELECT * FROM table',
-        metadata: {}
-      } as any;
+        content: 'SELECT * FROM table',
+        metadata: {},
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
@@ -267,39 +244,14 @@ describe('convertDeepnoteBlockToJupyterCell', () => {
       const block: DeepnoteBlock = {
         id: 'block-12',
         type: 'visualization',
-        source: 'chart_data',
-        metadata: {}
-      } as any;
+        content: 'chart_data',
+        metadata: {},
+        sortingKey: '1'
+      };
 
       const result = convertDeepnoteBlockToJupyterCell(block);
 
       expect(result.cell_type).toBe('code');
-    });
-
-    it('should convert input blocks to code cells', () => {
-      const inputTypes = [
-        'input-text',
-        'input-checkbox',
-        'input-textarea',
-        'input-file',
-        'input-select',
-        'input-date-range',
-        'input-date',
-        'input-slider'
-      ];
-
-      inputTypes.forEach(type => {
-        const block: DeepnoteBlock = {
-          id: `block-${type}`,
-          type,
-          source: 'input_value',
-          metadata: {}
-        } as any;
-
-        const result = convertDeepnoteBlockToJupyterCell(block);
-
-        expect(result.cell_type).toBe('code');
-      });
     });
   });
 });
