@@ -25,21 +25,27 @@ export async function requestAPI(
   try {
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
   } catch (error) {
-    throw new ServerConnection.NetworkError(error as any);
+    throw new ServerConnection.NetworkError(
+      error instanceof TypeError ? error : new TypeError(String(error))
+    );
   }
 
-  let data: any = await response.text();
+  let data: string | unknown = await response.text();
 
-  if (data.length > 0) {
+  if (typeof data === 'string' && data.length > 0) {
     try {
       data = JSON.parse(data);
-    } catch (error) {
+    } catch {
       console.log('Not a JSON response body.', response);
     }
   }
 
   if (!response.ok) {
-    throw new ServerConnection.ResponseError(response, data.message || data);
+    const errorMessage =
+      data && typeof data === 'object' && 'message' in data
+        ? (data as { message: string }).message
+        : String(data);
+    throw new ServerConnection.ResponseError(response, errorMessage);
   }
 
   return data;

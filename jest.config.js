@@ -4,13 +4,15 @@ const esModules = [
   '@codemirror',
   '@jupyter',
   '@microsoft',
+  '@deepnote',
   'exenv-es6',
   'lib0',
   'nanoid',
   'vscode-ws-jsonrpc',
   'y-protocols',
   'y-websocket',
-  'yjs'
+  'yjs',
+  'yaml'
 ].join('|');
 
 const baseConfig = jestJupyterLab(__dirname);
