@@ -27,12 +27,12 @@ const plugin: JupyterFrontEndPlugin<void> = {
     toolbarRegistry: IToolbarWidgetRegistry
   ) => {
     // Register a custom contents provider for the default notebook widget factory.
+    // Note: Content provider registry is required (available in JupyterLab 4.4+)
     const drive = (app.serviceManager.contents as ContentsManager).defaultDrive;
     const registry = drive?.contentProviderRegistry;
     if (!registry) {
-      // If content provider is a non-essential feature and support for JupyterLab <4.4 is desired:
       console.error(
-        'Cannot initialize content provider: no content provider registry.'
+        'Cannot initialize content provider: no content provider registry. JupyterLab 4.4.0 or higher is required.'
       );
       return;
     }

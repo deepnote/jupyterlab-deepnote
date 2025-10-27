@@ -146,24 +146,28 @@ jlpm test
 
 We follow [Semantic Versioning (semver)](https://semver.org/).
 
-The extension pins JupyterLab to the current major version in both Python and JavaScript dependencies to ensure compatibility.
+The extension requires **JupyterLab 4.4.0 or higher** (but not JupyterLab 5.x) due to its dependency on the content provider registry API. All JupyterLab dependencies include upper bounds to prevent automatic installation with incompatible future major versions.
 
-**Example `pyproject.toml` dependency:**
+**Current `pyproject.toml` build requirement:**
 
 ```toml
-[project.optional-dependencies]
-jupyterlab = ["jupyterlab>=4.0.0,<5.0.0"]
+[build-system]
+requires = ["hatchling>=1.5.0", "jupyterlab>=4.4.0,<5", "hatch-nodejs-version>=0.3.2"]
 ```
 
-**Example `package.json` peerDependencies:**
+**Current `package.json` dependencies with upper bounds:**
 
 ```json
-  "peerDependencies": {
-    "@jupyterlab/application": "^4.0.0",
-    "@jupyterlab/apputils": "^4.0.0",
-    "jupyterlab": "^4.0.0"
+  "dependencies": {
+    "@jupyterlab/application": "^4.0.0 <5",
+    "@jupyterlab/notebook": "^4.4.7 <5",
+    "@jupyterlab/services": "^7.0.0 <8",
+    "@jupyterlab/coreutils": "^6.0.0 <7",
+    ...
   }
 ```
+
+These upper bounds help prevent breaking changes from affecting users and align with JupyterLab's [extension development best practices](https://jupyterlab.readthedocs.io/en/stable/extension/extension_dev.html#overview-of-extensions).
 
 ## Sync with the JupyterLab extension template
 
