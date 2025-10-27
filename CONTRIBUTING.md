@@ -159,7 +159,7 @@ requires = ["hatchling>=1.5.0", "jupyterlab>=4.4.0,<5", "hatch-nodejs-version>=0
 
 ```json
   "dependencies": {
-    "@jupyterlab/application": "^4.0.0 <5",
+    "@jupyterlab/application": "^4.4.0 <5",
     "@jupyterlab/notebook": "^4.4.7 <5",
     "@jupyterlab/services": "^7.0.0 <8",
     "@jupyterlab/coreutils": "^6.0.0 <7",

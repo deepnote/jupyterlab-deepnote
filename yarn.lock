@@ -2032,7 +2032,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/application@npm:^4.0.0 <5, @jupyterlab/application@npm:^4.4.10":
+"@jupyterlab/application@npm:^4.4.0 <5, @jupyterlab/application@npm:^4.4.10":
   version: 4.4.10
   resolution: "@jupyterlab/application@npm:4.4.10"
   dependencies:
@@ -2103,7 +2103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/builder@npm:^4.0.0 <5":
+"@jupyterlab/builder@npm:^4.4.0 <5":
   version: 4.4.10
   resolution: "@jupyterlab/builder@npm:4.4.10"
   dependencies:
@@ -2522,7 +2522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/settingregistry@npm:^4.0.0 <5, @jupyterlab/settingregistry@npm:^4.4.10":
+"@jupyterlab/settingregistry@npm:^4.4.0 <5, @jupyterlab/settingregistry@npm:^4.4.10":
   version: 4.4.10
   resolution: "@jupyterlab/settingregistry@npm:4.4.10"
   dependencies:
@@ -2593,7 +2593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/testutils@npm:^4.0.0 <5":
+"@jupyterlab/testutils@npm:^4.4.0 <5":
   version: 4.4.10
   resolution: "@jupyterlab/testutils@npm:4.4.10"
   dependencies:
@@ -6903,13 +6903,13 @@ __metadata:
   resolution: "jupyterlab-deepnote@workspace:."
   dependencies:
     "@deepnote/blocks": ^1.1.0
-    "@jupyterlab/application": ^4.0.0 <5
-    "@jupyterlab/builder": ^4.0.0 <5
+    "@jupyterlab/application": ^4.4.0 <5
+    "@jupyterlab/builder": ^4.4.0 <5
     "@jupyterlab/coreutils": ^6.0.0 <7
     "@jupyterlab/notebook": ^4.4.7 <5
     "@jupyterlab/services": ^7.0.0 <8
-    "@jupyterlab/settingregistry": ^4.0.0 <5
-    "@jupyterlab/testutils": ^4.0.0 <5
+    "@jupyterlab/settingregistry": ^4.4.0 <5
+    "@jupyterlab/testutils": ^4.4.0 <5
     "@lumino/widgets": ^2.7.1
     "@types/jest": ^29.2.0
     "@types/json-schema": ^7.0.11

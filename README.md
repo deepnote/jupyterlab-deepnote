@@ -54,7 +54,7 @@ pip uninstall jupyterlab_deepnote
 
 ### JupyterLab Version Support
 
-This extension is compatible with **JupyterLab 4.4.0 or higher** (specifically JupyterLab 4.x series). It requires the content provider registry API introduced in JupyterLab 4.4.
+This extension is compatible with **JupyterLab 4.4.0 or higher**. It requires the content provider registry API introduced in JupyterLab 4.4.
 
 **Upper bound:** The extension sets an upper bound of `< 5.0.0` to prevent automatic installation with potentially incompatible future major versions of JupyterLab.
 
