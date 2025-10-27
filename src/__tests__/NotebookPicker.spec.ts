@@ -1,6 +1,3 @@
-// Copyright (c) Deepnote
-// Distributed under the terms of the Modified BSD License.
-
 import type { INotebookModel, NotebookPanel } from '@jupyterlab/notebook';
 import { framePromise } from '@jupyterlab/testing';
 import type { PartialJSONObject } from '@lumino/coreutils';

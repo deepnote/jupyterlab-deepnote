@@ -1,6 +1,3 @@
-// Copyright (c) Deepnote
-// Distributed under the terms of the Modified BSD License.
-
 import type { DeepnoteBlock } from '@deepnote/blocks';
 import { convertDeepnoteBlockToJupyterCell } from '../convert-deepnote-block-to-jupyter-cell';
 

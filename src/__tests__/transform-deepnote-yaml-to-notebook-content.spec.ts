@@ -1,6 +1,3 @@
-// Copyright (c) Deepnote
-// Distributed under the terms of the Modified BSD License.
-
 import { transformDeepnoteYamlToNotebookContent } from '../transform-deepnote-yaml-to-notebook-content';
 import { deserializeDeepnoteFile } from '@deepnote/blocks';
 

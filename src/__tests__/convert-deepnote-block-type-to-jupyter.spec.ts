@@ -1,6 +1,3 @@
-// Copyright (c) Deepnote
-// Distributed under the terms of the Modified BSD License.
-
 import { convertDeepnoteBlockTypeToJupyter } from '../convert-deepnote-block-type-to-jupyter';
 
 describe('convertDeepnoteBlockTypeToJupyter', () => {
