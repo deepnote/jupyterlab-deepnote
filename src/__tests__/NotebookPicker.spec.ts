@@ -13,12 +13,15 @@ describe('NotebookPicker', () => {
   let deepnoteMetadata: PartialJSONObject;
   let consoleErrorSpy: jest.SpyInstance | null = null;
 
-  const createMockPanel = (metadata: PartialJSONObject): NotebookPanel => {
+  const createMockPanel = (
+    metadata: PartialJSONObject,
+    dirty = false
+  ): NotebookPanel => {
     deepnoteMetadata = metadata;
 
     mockNotebookModel = {
       fromJSON: jest.fn(),
-      dirty: false,
+      dirty: dirty,
       getMetadata: jest.fn((key: string) => {
         if (key === 'deepnote') {
           return deepnoteMetadata;
@@ -159,6 +162,26 @@ describe('NotebookPicker', () => {
     });
 
     it('should set model.dirty to false after switching notebooks', async () => {
+      widget.dispose();
+
+      const metadata = {
+        notebooks: {
+          'Notebook 1': {
+            id: 'nb1',
+            name: 'Notebook 1',
+            cells: [{ cell_type: 'code', source: 'print(1)' }]
+          },
+          'Notebook 2': {
+            id: 'nb2',
+            name: 'Notebook 2',
+            cells: [{ cell_type: 'code', source: 'print(2)' }]
+          }
+        }
+      };
+
+      const dirtyPanel = createMockPanel(metadata, true);
+      await attachWidget(dirtyPanel);
+
       const select = widget.node.querySelector('select') as HTMLSelectElement;
       select.value = 'Notebook 2';
       select.dispatchEvent(new Event('change', { bubbles: true }));
