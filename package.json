@@ -1,7 +1,7 @@
 {
     "name": "jupyterlab-deepnote",
     "version": "0.1.0",
-    "description": "A Deepnote extension for JupyterLab",
+    "description": "A third-party Deepnote extension for JupyterLab",
     "keywords": [
         "jupyter",
         "jupyterlab",
