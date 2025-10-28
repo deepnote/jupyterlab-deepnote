@@ -3,7 +3,9 @@
 [![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/deepnote/jupyterlab-deepnote/graph/badge.svg?token=OV32VZNOJ2)](https://codecov.io/gh/deepnote/jupyterlab-deepnote)
 
-Read‑only viewer for Deepnote `.deepnote` files inside JupyterLab.
+A third-party Deepnote extension for JupyterLab that provides a read‑only viewer for Deepnote `.deepnote` files.
+
+> **Note:** This is an unofficial, community-developed extension and is not affiliated with or endorsed by Project Jupyter. JupyterLab is a trademark of LF Charities, Inc.
 
 ## Requirements
 
