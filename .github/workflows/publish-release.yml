@@ -18,6 +18,7 @@ jobs:
     environment: release
     permissions:
       id-token: write
+      packages: read
     env:
       NODE_VERSION: 22.x
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
