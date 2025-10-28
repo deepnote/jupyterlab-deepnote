@@ -1,3 +1,9 @@
+# Skip hook in CI environment (GitHub Actions)
+# Pushing to main is forbidden by branch protection rules, only the release workflow can do this.
+if [ -n "$CI" ]; then
+  exit 0
+fi
+
 branch_name="$(git symbolic-ref --short HEAD)"
 if [ "$branch_name" = "main" ]; then
   echo "Pushing directly to main is not allowed."
