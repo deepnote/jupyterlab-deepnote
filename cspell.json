@@ -13,7 +13,8 @@
     "*.min.js",
     "*.min.css",
     "*.map",
-    "jupyterlab_deepnote/labextension"
+    "jupyterlab_deepnote/labextension",
+    "CHANGELOG.md"
   ],
   "language": "en",
   "overrides": [
