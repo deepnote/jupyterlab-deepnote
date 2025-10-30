@@ -1,4 +1,5 @@
 ![Deepnote dragon](deepnote-dragon.png)
+
 <!---This is a placeholder for the Deepnote + jupyterlab logo-->
 
 <div align="center">
