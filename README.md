@@ -11,7 +11,7 @@
 
 ## A JupyterLab extension for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
 
-[Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub comunity](https://github.com/deepnote/deepnote)
+[Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub community](https://github.com/deepnote/deepnote)
 
 </div>
 
