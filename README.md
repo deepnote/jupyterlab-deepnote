@@ -1,4 +1,4 @@
-![Deepnote dragon](deepnote_dragon.png)
+![Deepnote dragon](deepnote-dragon.png)
 <!---This is a placeholder for the Deepnote + jupyterlab logo-->
 
 <div align="center">
@@ -9,25 +9,22 @@
 [![Python Version](https://img.shields.io/pypi/pyversions/jupyterlab-deepnote.svg)](https://pypi.org/project/jupyterlab-deepnote/)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-**A JupyterLab extension for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab**
+## A JupyterLab extension for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
 
-[Installation](#installation) • [Features](#features) • [Usage](#usage) • [Contributing](#contributing) • [License](#license)
+[Installation](#installation) • [Features](#features) • [Usage](#usage) • [Contributing](#contributing) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub comunity](https://github.com/deepnote/deepnote)
 
 </div>
 
 ---
+Deepnote is a data notebook for AI era. `jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
 
-## Overview
+### Key features
 
-`jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
-
-### Key Features
-
-- 📂 **Open Deepnote Files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
-- 📓 **Multi-Notebook Support**: Switch between multiple notebooks within a single `.deepnote` file
-- 👁️ **Read-Only Mode**: View notebook content safely without modifying the original `.deepnote` file
-- 🔄 **Seamless Integration**: Works natively with JupyterLab's notebook interface
-- 🎨 **Deepnote Block Support**: Renders Deepnote-specific block types as Jupyter cells
+- 📂 **Open Deepnote files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
+- 📓 **Multi-notebook support**: Switch between multiple notebooks within a single `.deepnote` file
+- 👁️ **Read-only mode**: View notebook content safely without modifying the original `.deepnote` file
+- 🔄 **Seamless integration**: Works natively with JupyterLab's notebook interface
+- 🎨 **Deepnote block support**: Renders Deepnote-specific block types as Jupyter cells
 
 ## Installation
 
@@ -38,15 +35,15 @@
 
 ### Install via pip
 
-Install the extension using pip:
+Install the extension using pip, see our [PyPI page](https://pypi.org/project/jupyterlab-deepnote/):
 
 ```bash
-pip install jupyterlab_deepnote
+pip install jupyterlab-deepnote
 ```
 
 The extension will be automatically enabled after installation.
 
-### Verify Installation
+### Verify installation
 
 Check that the extension is properly installed and enabled:
 
@@ -62,7 +59,7 @@ You should see `jupyterlab_deepnote` listed in both outputs.
 
 ## Usage
 
-### Opening Deepnote Files
+### Opening Deepnote files
 
 1. **Launch JupyterLab**:
    ```bash
@@ -73,38 +70,22 @@ You should see `jupyterlab_deepnote` listed in both outputs.
    - Use the file browser to navigate to your `.deepnote` file
    - Double-click the file to open it in the notebook viewer
 
-3. **Switch Between Notebooks** (if the `.deepnote` file contains multiple notebooks):
+3. **Switch between notebooks** (if the `.deepnote` file contains multiple notebooks):
    - Use the notebook picker dropdown in the toolbar
    - Select the notebook you want to view
-
-### Features in Detail
-
-#### Read-Only Viewing
-All content is displayed in read-only mode. You cannot:
-- Edit cell content
-- Execute cells
-- Save changes back to the `.deepnote` file
-
-This ensures the integrity of your original Deepnote project files.
-
-#### Supported Content
-The extension converts Deepnote blocks to Jupyter cells, supporting:
-- Code cells (Python and other languages)
-- Markdown cells
-- Cell outputs and visualizations
 
 ## Architecture
 
 This extension consists of two main components:
 
-- **Server Extension**: Handles `.deepnote` file parsing and conversion to Jupyter notebook format
-- **Frontend Extension**: Provides the JupyterLab UI integration and notebook picker widget
+- **Server extension**: Handles `.deepnote` file parsing and conversion to Jupyter notebook format. Not all the blocks are supported; visit [docs](https://deepnote.com/docs/deepnote-blocks) to learn more
+- **Frontend extension**: Provides the JupyterLab UI integration and notebook picker widget
 
 The extension uses a custom content provider to intercept `.deepnote` file requests and transform them into Jupyter-compatible notebook content.
 
 ## Troubleshooting
 
-### Extension Not Loading
+### Extension not loading
 
 If the extension doesn't appear to be working:
 
@@ -124,13 +105,13 @@ If the extension doesn't appear to be working:
    jupyter lab --debug
    ```
 
-### Common Issues
+### Common issues
 
 - **`.deepnote` files not opening**: Ensure the file extension is exactly `.deepnote`
 - **Missing notebooks**: Verify the `.deepnote` file contains valid YAML-formatted Deepnote project data
 - **Extension conflicts**: Try disabling other notebook-related extensions temporarily
 
-### Getting Help
+### Getting help
 
 If you encounter issues:
 1. Check the [GitHub Issues](https://github.com/deepnote/jupyterlab-deepnote/issues) for similar problems
@@ -151,49 +132,22 @@ After uninstalling, restart JupyterLab for the changes to take effect.
 
 For development setup, testing, and contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-### Quick Start for Contributors
-
-```bash
-# Clone the repository
-git clone https://github.com/deepnote/jupyterlab-deepnote.git
-cd jupyterlab-deepnote
-
-# Install in development mode
-pip install -e ".[test]"
-jupyter labextension develop . --overwrite
-
-# Watch for changes
-jlpm watch
-```
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for:
-- Development setup instructions
-- Code style and testing requirements
-- Pull request process
-- Release workflow
-
 ## License
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Related projects
 
-- Built with the [JupyterLab Extension Template](https://github.com/jupyterlab/extension-template)
-- Developed by [Deepnote](https://deepnote.com)
-
-## Related Projects
-
-- [Deepnote](https://deepnote.com) - Collaborative data science notebook
-- [JupyterLab](https://jupyterlab.readthedocs.io/) - Extensible environment for interactive computing
+- [Deepnote](https://deepnote.com)
+- [Deepnote Open Source](https://github.com/deepnote/deepnote)
+- [VS Code extension](https://marketplace.visualstudio.com/items?itemName=Deepnote.vscode-deepnote)
+- [Cursor extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
+- [Windsurf extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
 
 ---
 
 <div align="center">
 
-**[⬆ Back to Top](#jupyterlab-deepnote-extension)**
-
-Made with ❤️ by the Deepnote team
+Made with 💙 by the Deepnote team
 
 </div>
