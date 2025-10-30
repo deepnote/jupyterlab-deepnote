@@ -16,6 +16,7 @@
 </div>
 
 ---
+
 Deepnote is a data notebook for AI era. `jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
 
 ### Key features
@@ -118,6 +119,7 @@ If the extension doesn't appear to be working:
 ### Getting help
 
 If you encounter issues:
+
 1. Check the [GitHub Issues](https://github.com/deepnote/jupyterlab-deepnote/issues) for similar problems
 2. Review the [CONTRIBUTING.md](CONTRIBUTING.md) for development setup
 3. Open a new issue with detailed information about your environment and the problem
