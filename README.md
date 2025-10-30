@@ -81,7 +81,7 @@ You should see `jupyterlab_deepnote` listed in both outputs.
 
 This extension consists of two main components:
 
-- **Server extension**: Handles `.deepnote` file parsing and conversion to Jupyter notebook format. Not all the blocks are supported; visit [docs](https://deepnote.com/docs/deepnote-blocks) to learn more
+- **Server extension**: Handles `.deepnote` file parsing and conversion to Jupyter notebook format. Not all the blocks are supported; visit [docs](https://deepnote.com/docs?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) to learn more
 - **Frontend extension**: Provides the JupyterLab UI integration and notebook picker widget
 
 The extension uses a custom content provider to intercept `.deepnote` file requests and transform them into Jupyter-compatible notebook content.
