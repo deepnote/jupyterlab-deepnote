@@ -13,7 +13,10 @@
     "*.min.js",
     "*.min.css",
     "*.map",
-    "jupyterlab_deepnote/labextension"
+    "jupyterlab_deepnote/labextension",
+    // CHANGELOG.md is generated and can contain unknown
+    // words from commit messages and git user names.
+    "CHANGELOG.md"
   ],
   "language": "en",
   "overrides": [
