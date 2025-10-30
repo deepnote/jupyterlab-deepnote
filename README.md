@@ -8,7 +8,9 @@
 [![Python Version](https://img.shields.io/pypi/pyversions/jupyterlab-deepnote.svg)](https://pypi.org/project/jupyterlab-deepnote/)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-## A JupyterLab extension for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
+## A third-party extension for JupyterLab for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
+
+> **Note:** This is an unofficial, community-developed extension and is not affiliated with or endorsed by Project Jupyter. JupyterLab is a trademark of LF Charities, Inc.
 
 [Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub community](https://github.com/deepnote/deepnote)
 
