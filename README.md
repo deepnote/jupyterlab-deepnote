@@ -1,6 +1,4 @@
-![Deepnote dragon](deepnote-dragon.png)
-
-<!---This is a placeholder for the Deepnote + jupyterlab logo-->
+![Deepnote JupyterLab cover image](deepnote-jupyterlab-cover-image.png)
 
 <div align="center">
 
