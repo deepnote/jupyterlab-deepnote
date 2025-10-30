@@ -11,7 +11,7 @@
 
 ## A JupyterLab extension for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
 
-[Installation](#installation) • [Features](#features) • [Usage](#usage) • [Contributing](#contributing) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub comunity](https://github.com/deepnote/deepnote)
+[Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub comunity](https://github.com/deepnote/deepnote)
 
 </div>
 
@@ -62,6 +62,7 @@ You should see `jupyterlab_deepnote` listed in both outputs.
 ### Opening Deepnote files
 
 1. **Launch JupyterLab**:
+
    ```bash
    jupyter lab
    ```
@@ -90,17 +91,20 @@ The extension uses a custom content provider to intercept `.deepnote` file reque
 If the extension doesn't appear to be working:
 
 1. **Verify installation**:
+
    ```bash
    jupyter server extension list
    jupyter labextension list
    ```
 
 2. **Rebuild JupyterLab** (if installed from source):
+
    ```bash
    jupyter lab build
    ```
 
 3. **Check for errors**:
+
    ```bash
    jupyter lab --debug
    ```
