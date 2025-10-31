@@ -220,8 +220,7 @@ See [RELEASE](RELEASE.md) for details on the release process. We recommend using
 
 If you have questions or run into issues:
 
-1. Check the [Troubleshooting](#troubleshooting) section above
-2. Search existing [GitHub Issues](https://github.com/deepnote/jupyterlab-deepnote/issues)
-3. Open a new issue with details about your problem
+1. Search existing [GitHub Issues](https://github.com/deepnote/jupyterlab-deepnote/issues)
+2. Open a new issue with details about your problem
 
 Thank you for contributing! 🎉
