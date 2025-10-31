@@ -1,8 +1,19 @@
-# Scope
+# Contributing to jupyterlab-deepnote
+
+Thank you for your interest in contributing to the Deepnote JupyterLab extension! This guide will help you set up your development environment and understand the contribution workflow.
 
 This document is intended for contributors and maintainers working on the extension's source code. For general usage and installation instructions, please refer to the README.
 
 # Contributing to `jupyterlab-deepnote`
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+1. [Python](https://www.python.org/) 3.10 or later - Required for the server extension
+2. [Node.js](https://nodejs.org/) v22 or later - Required for building the frontend extension
+3. [JupyterLab](https://jupyterlab.readthedocs.io/) >= 4.4.0 - The extension requires JupyterLab 4.x
+4. **GitHub Account** - With access to create [Personal Access Tokens](https://github.com/settings/tokens)
 
 ## Development install
 
@@ -182,3 +193,19 @@ This will apply the latest template changes interactively. Review and commit any
 ## Release workflow
 
 See [RELEASE](RELEASE.md) for details on the release process. We recommend using [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser) and [PyPI trusted publishing](https://docs.pypi.org/trusted-publishers/) for secure and automated releases.
+
+## Additional Resources
+
+- [JupyterLab Extension Developer Guide](https://jupyterlab.readthedocs.io/en/stable/extension/extension_dev.html)
+- [JupyterLab Extension Tutorial](https://jupyterlab.readthedocs.io/en/stable/extension/extension_tutorial.html)
+- [Project Issues](https://github.com/deepnote/jupyterlab-deepnote/issues)
+
+## Questions?
+
+If you have questions or run into issues:
+
+1. Check the [Troubleshooting](#troubleshooting) section above
+2. Search existing [GitHub Issues](https://github.com/deepnote/jupyterlab-deepnote/issues)
+3. Open a new issue with details about your problem
+
+Thank you for contributing! 🎉
