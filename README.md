@@ -1,4 +1,4 @@
-# JupyterLab Deepnote
+![Deepnote JupyterLab cover image](deepnote-jupyterlab-cover-image.png)
 
 <div align="center">
 
