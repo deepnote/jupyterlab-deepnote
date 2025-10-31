@@ -32,7 +32,7 @@ Deepnote is a data notebook for AI era. `jupyterlab-deepnote` is a JupyterLab ex
 
 ### Requirements
 
-- **Python**: 3.9 or higher
+- **Python**: 3.10 or higher
 - **JupyterLab**: 4.0.0 or higher
 
 ### Install via pip
