@@ -10,7 +10,7 @@
 
 ## A third-party extension for JupyterLab for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
 
-> **Note:** This is an unofficial, community-developed extension and is not affiliated with or endorsed by Project Jupyter. JupyterLab is a trademark of LF Charities, Inc. “Jupyter” and the Jupyter logos are trademarks or registered trademarks of LF Charities, used by Deepnote Inc with permission.
+> **Note:** This is an unofficial, community-developed extension and is not affiliated with or endorsed by Project Jupyter. Jupyter, JupyterLab and the Jupyter logos are trademarks or registered trademarks of LF Charities, used by Deepnote Inc with permission.
 
 [Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub community](https://github.com/deepnote/deepnote)
 
