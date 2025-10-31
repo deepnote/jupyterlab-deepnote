@@ -1,4 +1,4 @@
-# Jupyterlab Deepnote
+# JupyterLab Deepnote
 <div align="center">
 
 [![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
