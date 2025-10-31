@@ -1,10 +1,8 @@
-# Contributing to jupyterlab-deepnote
+# Contributing to `jupyterlab-deepnote`
 
 Thank you for your interest in contributing to the Deepnote JupyterLab extension! This guide will help you set up your development environment and understand the contribution workflow.
 
 This document is intended for contributors and maintainers working on the extension's source code. For general usage and installation instructions, please refer to the README.
-
-# Contributing to `jupyterlab-deepnote`
 
 ## Prerequisites
 
