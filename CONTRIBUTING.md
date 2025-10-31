@@ -188,6 +188,24 @@ copier update --trust
 
 This will apply the latest template changes interactively. Review and commit any updates as appropriate.
 
+## Making Changes
+
+### Code Style
+
+- **Python:** Follow PEP 8 guidelines
+- **TypeScript:** The project uses ESLint and Prettier (configured in the project)
+
+### Pull Requests
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Write clear, descriptive commit messages
+5. Run tests to ensure everything passes
+6. Commit your changes
+7. Push to your fork
+8. Open a Pull Request with a clear description
+
 ## Release workflow
 
 See [RELEASE](RELEASE.md) for details on the release process. We recommend using [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser) and [PyPI trusted publishing](https://docs.pypi.org/trusted-publishers/) for secure and automated releases.
