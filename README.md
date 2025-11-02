@@ -1,32 +1,27 @@
-![Deepnote JupyterLab cover image](deepnote-jupyterlab-cover-image.png)
-
 <div align="center">
+
+![Deepnote cover image](./assets/deepnote-cover-image.png)
 
 [![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/deepnote/jupyterlab-deepnote/graph/badge.svg?token=OV32VZNOJ2)](https://codecov.io/gh/deepnote/jupyterlab-deepnote)
 [![PyPI](https://img.shields.io/pypi/v/jupyterlab-deepnote.svg)](https://pypi.org/project/jupyterlab-deepnote/)
 [![Python Version](https://img.shields.io/pypi/pyversions/jupyterlab-deepnote.svg)](https://pypi.org/project/jupyterlab-deepnote/)
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-## A third-party extension for JupyterLab for viewing Deepnote projects (`.deepnote` files) directly in JupyterLab
-
-> **Note:** This is an unofficial, community-developed extension and is not affiliated with or endorsed by Project Jupyter. Jupyter, JupyterLab and the Jupyter logos are trademarks or registered trademarks of LF Charities, used by Deepnote Inc with permission.
-
-[Installation](#installation) • [Usage](#usage) • [Development](#development) • [License](#license) • [Deepnote](https://deepnote.com) • [GitHub community](https://github.com/deepnote/deepnote)
+[Website](https://deepnote.com/?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) • [Docs](https://deepnote.com/docs?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) • [Changelog](https://deepnote.com/changelog?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) • [X](https://x.com/DeepnoteHQ) • [Examples](https://deepnote.com/explore?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) • [Community](https://github.com/deepnote/deepnote/discussions)
 
 </div>
 
----
+# Deepnote extension for JupyterLab
 
-Deepnote is the data notebook for the AI era. `jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
+`jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
 
-### Key features
+## Key features
 
-- 📂 **Open Deepnote files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
-- 📓 **Multi-notebook support**: Switch between multiple notebooks within a single `.deepnote` file
-- 👁️ **Read-only mode**: View notebook content safely without modifying the original `.deepnote` file
-- 🔄 **Seamless integration**: Works natively with JupyterLab's notebook interface
-- 🎨 **Deepnote block support**: Renders Deepnote-specific block types as Jupyter cells
+- **Open Deepnote files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
+- **Multi-notebook support**: Switch between multiple notebooks within a single `.deepnote` file
+- **Read-only mode**: View notebook content safely without modifying the original `.deepnote` file
+- **Seamless integration**: Works natively with JupyterLab's notebook interface
+- **Deepnote block support**: Renders Deepnote-specific block types as Jupyter cells
 
 ## Installation
 
@@ -59,9 +54,7 @@ jupyter labextension list
 
 You should see `jupyterlab_deepnote` listed in both outputs.
 
-## Usage
-
-### Opening Deepnote files
+## Opening Deepnote files
 
 1. **Launch JupyterLab**:
 
@@ -137,13 +130,13 @@ After uninstalling, restart JupyterLab for the changes to take effect.
 
 ## Compatibility
 
-### JupyterLab Version Support
+### JupyterLab version support
 
 This extension is compatible with **JupyterLab 4.4.0 or higher**. It requires the content provider registry API introduced in JupyterLab 4.4.
 
 **Upper bound:** The extension sets an upper bound of `< 5.0.0` to prevent automatic installation with potentially incompatible future major versions of JupyterLab.
 
-### Maintenance Policy
+### Maintenance policy
 
 Following [JupyterLab's extension development guidelines](https://jupyterlab.readthedocs.io/en/stable/extension/extension_dev.html#overview-of-extensions), we adhere to semantic versioning principles:
 
@@ -157,7 +150,7 @@ When JupyterLab 5.x is released, we will:
 2. Release a new major or minor version with explicit JupyterLab 5.x support
 3. Clearly document any breaking changes in the changelog
 
-### Backwards Compatibility
+### Backwards compatibility
 
 This extension follows semantic versioning for its own API:
 
@@ -166,26 +159,20 @@ This extension follows semantic versioning for its own API:
 
 Note: This extension does **not** support JupyterLab 3.x or earlier versions.
 
-## Development
+## Need help?
+
+- Join our Community!
+- Open an issue for bug reports or feature requests
+- Check out source code of related repositories: [Deepnote Open Source](https://github.com/deepnote/deepnote), [JupyterLab extension](https://github.com/deepnote/jupyterlab-deepnote) and [Deepnote Toolkit](https://github.com/deepnote/deepnote-toolkit).
+- Check out our [documentation](https://deepnote.com/docs?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main)
+- Want a low-code experience? Visit [Deepnote Cloud](https://deepnote.com/?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) together with Deepnote AI agent
+
+## Contributing
 
 For development setup, testing, and contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
-
-## Related projects
-
-- [Deepnote](https://deepnote.com)
-- [Deepnote Open Source](https://github.com/deepnote/deepnote)
-- [VS Code extension](https://marketplace.visualstudio.com/items?itemName=Deepnote.vscode-deepnote)
-- [Cursor extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
-- [Windsurf extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
 
 ---
 
 <div align="center">
-
-Made with 💙 by the Deepnote team
-
+Built with 💙
 </div>
