@@ -13,15 +13,15 @@
 
 # Deepnote extension for JupyterLab
 
-Deepnote is the data notebook for the AI era. `jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
+`jupyterlab-deepnote` is a JupyterLab extension that enables you to open and view [Deepnote](https://deepnote.com) project files (`.deepnote` format) directly within JupyterLab. This extension provides a seamless read-only viewer for Deepnote notebooks, allowing you to explore Deepnote projects without leaving your JupyterLab environment.
 
 ## Key features
 
--  **Open Deepnote files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
--  **Multi-notebook support**: Switch between multiple notebooks within a single `.deepnote` file
-- ️ **Read-only mode**: View notebook content safely without modifying the original `.deepnote` file
--  **Seamless integration**: Works natively with JupyterLab's notebook interface
--  **Deepnote block support**: Renders Deepnote-specific block types as Jupyter cells
+- **Open Deepnote files**: View `.deepnote` project files containing Deepnote notebooks in JupyterLab
+- **Multi-notebook support**: Switch between multiple notebooks within a single `.deepnote` file
+- **Read-only mode**: View notebook content safely without modifying the original `.deepnote` file
+- **Seamless integration**: Works natively with JupyterLab's notebook interface
+- **Deepnote block support**: Renders Deepnote-specific block types as Jupyter cells
 
 ## Installation
 
@@ -158,22 +158,20 @@ This extension follows semantic versioning for its own API:
 
 Note: This extension does **not** support JupyterLab 3.x or earlier versions.
 
+## Need help?
+- Join our Community!
+- Open an issue for bug reports or feature requests
+- Check out source code of related repositories: [Deepnote Open Source](https://github.com/deepnote/deepnote), [JupyterLab extension](https://github.com/deepnote/jupyterlab-deepnote) and [Deepnote Toolkit](https://github.com/deepnote/deepnote-toolkit).
+- Check out our [documentation](https://deepnote.com/docs?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main)
+- Want a low-code experience? Visit [Deepnote Cloud](https://deepnote.com/?utm_source=github&utm_medium=github&utm_campaign=github&utm_content=readme_main) together with Deepnote AI agent
+
 ## Contributing
 
 For development setup, testing, and contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Related projects
-
-- [Deepnote](https://deepnote.com)
-- [Deepnote Open Source](https://github.com/deepnote/deepnote)
-- [VS Code extension](https://marketplace.visualstudio.com/items?itemName=Deepnote.vscode-deepnote)
-- [Cursor extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
-- [Windsurf extension](https://open-vsx.org/extension/Deepnote/vscode-deepnote)
-
 ---
-
 <div align="center">
 
-Made with 💙 by the data-driven team
+Built with 💙 
 
 </div>
