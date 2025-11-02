@@ -1,6 +1,6 @@
 <div align="center">
 
-![Deepnote JupyterLab cover image](/assets/deepnote-jupyterlab-cover-image.png)
+![Deepnote JupyterLab cover image](./assets/deepnote-jupyterlab-cover-image.png)
 
 [![CI](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deepnote/jupyterlab-deepnote/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/deepnote/jupyterlab-deepnote/graph/badge.svg?token=OV32VZNOJ2)](https://codecov.io/gh/deepnote/jupyterlab-deepnote)
