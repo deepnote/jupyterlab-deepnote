@@ -26,6 +26,7 @@
 ## Installation
 
 ### Requirements
+
 - **Python**: 3.10 or higher
 - **JupyterLab**: 4.4.0 or higher
 
@@ -159,6 +160,7 @@ This extension follows semantic versioning for its own API:
 Note: This extension does **not** support JupyterLab 3.x or earlier versions.
 
 ## Need help?
+
 - Join our Community!
 - Open an issue for bug reports or feature requests
 - Check out source code of related repositories: [Deepnote Open Source](https://github.com/deepnote/deepnote), [JupyterLab extension](https://github.com/deepnote/jupyterlab-deepnote) and [Deepnote Toolkit](https://github.com/deepnote/deepnote-toolkit).
@@ -170,8 +172,7 @@ Note: This extension does **not** support JupyterLab 3.x or earlier versions.
 For development setup, testing, and contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
+
 <div align="center">
-
-Built with 💙 
-
+Built with 💙
 </div>
